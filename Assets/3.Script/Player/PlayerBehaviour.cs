@@ -1,6 +1,5 @@
 using CustomInspector;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]
@@ -48,7 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         GameStop();
         // If not Paused
-        if (GameManager.isLive)
+        if (Time.timeScale != 0)
         {
             Vector3 oldPosition = transform.position; 
             // 마우스 이동 및 경계 체크 메소드 호출
@@ -104,13 +103,11 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void Death()
     {
-        if (health == 0 || transform.position.y < -5f)
+        if (health == 0)
         {
             /*
                 GameOver 처리
             */
-            GameManager.isLive = false;
-            Time.timeScale = 0f;
         }
     }
 }
