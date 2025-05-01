@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviour : MonoBehaviour
 {   
+    [Header("KeyCode")]
+    private KeyCode KEYSTOP = KeyCode.Escape; 
     [Header("Player Data")]
     [SerializeField] private PlayerData data;
     // public Shooter weapon; // 주석 처리된 부분은 그대로 둠
@@ -19,8 +21,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Rect movementLimits = new Rect(-5, 0, 10, 1); 
     public float yAxisLimit = 5f;
 
-    [HideInInspector]
-    int health;
+    public int health;
 
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
@@ -44,6 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        GameStop();
         // If not Paused
         if (Time.timeScale != 0)
         {
@@ -53,6 +55,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             // 점프 입력 감지 및 점프 처리 메소드 호출
             HandleJumpInput(); // 메소드 이름 변경
+            Death();
         }
     }
 
@@ -94,16 +97,17 @@ public class PlayerBehaviour : MonoBehaviour
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
     }
 
-    
-    void OnCollisionEnter(Collision other) 
-	{
-        if (/* Obstacle 구별하는 논리식 */true)
+    private void GameStop()
+    {
+        if (Input.GetKeyDown(KEYSTOP)) Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
+    }
+    private void Death()
+    {
+        if (health == 0)
         {
-
+            /*
+                GameOver 처리
+            */
         }
-        else if (/* Collectable 구별하는 논리식 */false)
-        {
-
-        }
-	}
+    }
 }

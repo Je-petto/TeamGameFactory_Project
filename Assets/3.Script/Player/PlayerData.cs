@@ -1,10 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 public enum PlayerEnum
 {
     Airship = 0
 }
-[CreateAssetMenu(menuName = "ScriptableObject/PlayerData", fileName = "PlayerData")]
+[CreateAssetMenu(menuName = "ScriptableObject/Players", fileName = "Players")]
 public class PlayerData : ScriptableObject
 {
     public PlayerEnum player = PlayerEnum.Airship;
@@ -15,6 +14,6 @@ public class PlayerData : ScriptableObject
     public float xMoveSpeed;
     public float jumpForce;
 
-    
+
 
 }
