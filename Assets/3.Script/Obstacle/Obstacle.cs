@@ -11,6 +11,8 @@ public class Obstacle : MonoBehaviour
 
             if (player.health - data.damage < 0) player.health = 0;
             else player.health -= data.damage;
+
+            Destroy(gameObject);
         }
     }
 }
