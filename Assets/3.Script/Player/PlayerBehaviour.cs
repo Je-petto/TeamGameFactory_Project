@@ -1,32 +1,26 @@
+using CustomInspector;
 using UnityEngine;
 
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviour : MonoBehaviour
-{
+{   
+    [Header("Player Data")]
+    [SerializeField] private PlayerData data;
     // public Shooter weapon; // 주석 처리된 부분은 그대로 둠
-    public int maxLife = 10;
-    public int maxWeaponLevel = 5;
-    public float speed = 1;
+    [ReadOnly] private int maxHealth = 10;
+    [ReadOnly] private float xMoveSpeed = 1;
+    [ReadOnly] private float jumpForce = 5f;
+
     // movementLimits는 Rect (x, y, width, height) 형태로 정의되어 있어.
     // x = xMin, y = yMin, width = xMax - xMin, height = yMax - yMin
     // 예시: x 범위 -7 ~ 7, y 범위 0 ~ 10
     // 네가 설정한 Rect(-5, 0, 1, 1)는 x=-5~-4, y=0~1 범위로 매우 좁아. 의도한 범위가 맞는지 확인해봐!
-    public Rect movementLimits = new Rect(-5, 0, 1, 1); 
+    public Rect movementLimits = new Rect(-5, 0, 10, 1); 
     public float yAxisLimit = 5f;
 
     [HideInInspector]
-    int weaponLevel;
-    int life;
-    Vector3 initialPosition;
-    Quaternion initialRotation;
-
-    // 점프 관련 변수 (jumpRange, jumpDuration 대신 Rigidbody에 사용할 변수로 변경)
-    // Rigidbody를 사용해서 점프할 때는 '힘'이나 '속도' 개념을 사용해.
-    public float jumpForce = 5f; // 점프할 때 위로 가할 힘의 크기
-
-    // 중력 관련 변수는 Rigidbody.useGravity로 대체
-    // public float gravityForce = 0.00001f; // 이 변수는 이제 사용하지 않아.
+    int health;
 
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
@@ -36,9 +30,8 @@ public class PlayerBehaviour : MonoBehaviour
     //==================================================================================
     void Awake()
     {
-        life = maxLife;
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
+        SetupData();
+        health = maxHealth;
 
         // Rigidbody 컴포넌트 가져오기
         rb = GetComponent<Rigidbody>();
@@ -62,9 +55,16 @@ public class PlayerBehaviour : MonoBehaviour
             HandleJumpInput(); // 메소드 이름 변경
         }
     }
+
+    void SetupData()
+    {
+        maxHealth = data.maxHealth;
+        xMoveSpeed = data.xMoveSpeed;
+        jumpForce = data.jumpForce;
+    }
     void MoveMouseWithinLimits()
     {
-        Vector3 moveDelta = new Vector3(Input.GetAxis("Mouse X") * speed, 0, Input.GetAxis("Mouse Y") * speed);
+        Vector3 moveDelta = new Vector3(Input.GetAxis("Mouse X") * xMoveSpeed, 0, Input.GetAxis("Mouse Y") * xMoveSpeed);
         transform.Translate(moveDelta);
 
         // 오브젝트의 현재 위치를 가져와서 경계 안에 있는지 확인
@@ -93,4 +93,17 @@ public class PlayerBehaviour : MonoBehaviour
         if (transform.position.y > yAxisLimit)
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
     }
+
+    
+    void OnCollisionEnter(Collision other) 
+	{
+        if (/* Obstacle 구별하는 논리식 */true)
+        {
+
+        }
+        else if (/* Collectable 구별하는 논리식 */false)
+        {
+
+        }
+	}
 }
