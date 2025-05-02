@@ -9,9 +9,9 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("KeyCode")]
     private KeyCode KEYSTOP = KeyCode.Escape; 
     [Header("Player Data")]
-    [SerializeField] private PlayerData data;
+    public PlayerData data;
     // public Shooter weapon; // 주석 처리된 부분은 그대로 둠
-    [ReadOnly] private int maxHealth = 10;
+    [ReadOnly] private int maxHealth = 100;
     [ReadOnly] private float xMoveSpeed = 1;
     [ReadOnly] private float jumpForce = 5f;
 
@@ -47,7 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        GameStop();
+        Pause();
         // If not Paused
         if (GameManager.isLive)
         {
@@ -114,7 +114,7 @@ public class PlayerBehaviour : MonoBehaviour
     
 
     // 추후에 UIManager로 이동될 부분
-    private void GameStop()
+    private void Pause()
     {
         if (Input.GetKeyDown(KEYSTOP)) Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
     }

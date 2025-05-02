@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] PlayerBehaviour player;
     public List<GameObject> obstaclePrefabs; // 생성할 옵스타클 프리팹
