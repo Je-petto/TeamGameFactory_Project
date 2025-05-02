@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   maxHealth: 100
-  xMoveSpeed: 1
+  xMoveSpeed: 0.5
   jumpForce: 5
