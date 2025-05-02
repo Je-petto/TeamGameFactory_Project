@@ -22,8 +22,7 @@ public class Obstacle : MonoBehaviour
         {
             PlayerBehaviour player = col.transform.parent.parent.GetComponent<PlayerBehaviour>();
 
-            if (player.health - data.damage < 0) player.health = 0;
-            else player.health -= data.damage;
+            player.OnDamage(data.damage);
 
             Destroy(gameObject);
         }

@@ -27,6 +27,8 @@ public class PlayerBehaviour : MonoBehaviour
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
     [SerializeField] MeshRenderer mesh;
+    [SerializeField] UIManager ui;
+
 
     // 점프 쿨타임이나 바닥 체크 변수가 있으면 좋겠지만, 일단은 기본 기능만 수정.
 
@@ -98,6 +100,12 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (transform.position.y > yAxisLimit)
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
+    }
+    public void OnDamage(int damage)
+    {
+        if (health - damage < 0) health = 0;
+        else health -= damage;
+        ui.DamageUI();
     }
     private void Death()
     {

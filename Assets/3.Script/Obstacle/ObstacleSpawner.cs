@@ -34,7 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
         float randomYAxis = Random.Range(-player.yAxisLimit, player.yAxisLimit);
         Vector3 randomPos = new Vector3(randomXAxis, randomYAxis, spawnZ);
 
-
+        
         GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
         Instantiate(prefab, randomPos, Quaternion.identity, SpawnObstacle);
     }

@@ -15,4 +15,4 @@ MonoBehaviour:
   player: 0
   maxHealth: 100
   xMoveSpeed: 0.3
-  jumpForce: 5
+  jumpForce: 6.5
