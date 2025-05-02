@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5563704683405056678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -187,6 +187,8 @@ MonoBehaviour:
     width: 10
     height: 1
   yAxisLimit: 5
+  health: 0
+  mesh: {fileID: 2007697213237137708}
 --- !u!1 &8564887566535794617
 GameObject:
   m_ObjectHideFlags: 0

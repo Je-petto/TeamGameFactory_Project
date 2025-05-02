@@ -26,6 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
+    [SerializeField] MeshRenderer mesh;
 
     // 점프 쿨타임이나 바닥 체크 변수가 있으면 좋겠지만, 일단은 기본 기능만 수정.
 
@@ -65,6 +66,7 @@ public class PlayerBehaviour : MonoBehaviour
         maxHealth = data.maxHealth;
         xMoveSpeed = data.xMoveSpeed;
         jumpForce = data.jumpForce;
+        mesh.enabled = true;
     }
     void MoveMouseWithinLimits()
     {
@@ -97,20 +99,23 @@ public class PlayerBehaviour : MonoBehaviour
         if (transform.position.y > yAxisLimit)
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
     }
-
-    private void GameStop()
-    {
-        if (Input.GetKeyDown(KEYSTOP)) Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
-    }
     private void Death()
     {
-        if (health == 0 || transform.position.y < -5f)
+        if (health == 0 || transform.position.y < -10f)
         {
             /*
                 GameOver 처리
             */
             GameManager.isLive = false;
+            mesh.enabled = false;
             Time.timeScale = 0f;
         }
+    }
+    
+
+    // 추후에 UIManager로 이동될 부분
+    private void GameStop()
+    {
+        if (Input.GetKeyDown(KEYSTOP)) Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
     }
 }

@@ -6,7 +6,7 @@ public class ScrollManager : MonoBehaviour
     [Tooltip("Z축 이동속도")] public float scrollSpeed = 5f; // Z축 이동 속도
     public float scrollIncreseSpeed = 1.2f;
 
-    private float destroyItem; //아이템 삭제 위치조정
+    private float destroyItem; // 아이템 삭제 위치조정
 
     private Vector3 scrollDirection = Vector3.back; // 카메라 방향으로 움직임 고정(-z축 방향)
 
@@ -16,7 +16,7 @@ public class ScrollManager : MonoBehaviour
     void Start()
     {
         if (Camera.main != null)
-            destroyItem = Camera.main.transform.position.z - destroyOffsetPos; //카메라 Z축의 -5 이후 삭제
+            destroyItem = Camera.main.transform.position.z - destroyOffsetPos; // 카메라 Z축의 -5 이후 삭제
     }
 
     void Update()

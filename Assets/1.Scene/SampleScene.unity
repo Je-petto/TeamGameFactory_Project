@@ -172,8 +172,8 @@ MonoBehaviour:
   - {fileID: 100000, guid: 68c3c0615662c6144836fe4edb48f9b2, type: 3}
   SpawnObstacle: {fileID: 251167881}
   mainCamera: {fileID: 1751586548}
-  spawnZ: 40
-  spawnInterval: 0.5
+  spawnZ: 125
+  spawnInterval: 0.3
 --- !u!4 &287262003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7795162712652259654, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstacleSpawnParent: {fileID: 251167881}
   scrollSpeed: 30
-  scrollIncreseSpeed: 1.2
+  scrollIncreseSpeed: 1.1
   destroyOffsetPos: -5
   distance: 0
 --- !u!1 &1713583061
