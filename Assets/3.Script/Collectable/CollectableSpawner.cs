@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour
+public class CollectableSpawner : MonoBehaviour
 {
     [SerializeField] PlayerBehaviour player;
-    public List<GameObject> obstaclePrefabs; // 생성할 옵스타클 프리팹
+    public List<GameObject> collectablePrefabs; // 생성할 Collectable 프리팹
 
     public Transform SpawnObstacle; //생성된 옵스타클 프리팹이 들어갈 부모
     public Camera mainCamera;
@@ -23,33 +23,31 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            SpwanObstacle();
+            SpwanCollectable();
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    private void SpwanObstacle()
+    private void SpwanCollectable()
     {
         float randomXAxis = Random.Range(player.movementLimits.x, player.movementLimits.width + player.movementLimits.x);
         float randomYAxis = Random.Range(-player.yAxisLimit, player.yAxisLimit);
         Vector3 randomPos = new Vector3(randomXAxis, randomYAxis, spawnZ);
 
         GameObject spawnObj = CalculateWeight();
-
-        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
-        Instantiate(prefab, randomPos, Quaternion.identity, SpawnObstacle);
+        
+        Instantiate(spawnObj, randomPos, Quaternion.identity, SpawnObstacle);
     }
-
     GameObject CalculateWeight()
     {
         float maxWeight = 0f, curWeight = 0f;
         GameObject spawnObj = null;
-        foreach (var obj in obstaclePrefabs)
-            maxWeight += obj.GetComponent<Obstacle>().data.weight;
+        foreach (var obj in collectablePrefabs)
+            maxWeight += obj.GetComponent<Collectable>().data.weight;
         float selectWeight = Random.Range(0, maxWeight);
-        foreach (var obj in obstaclePrefabs)
+        foreach (var obj in collectablePrefabs)
         {
-            curWeight += obj.GetComponent<Obstacle>().data.weight;
+            curWeight += obj.GetComponent<Collectable>().data.weight;
             if (selectWeight <= curWeight)
             {
                 spawnObj = obj;

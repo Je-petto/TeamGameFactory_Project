@@ -3,6 +3,7 @@ using UnityEngine;
 public class ScrollManager : MonoBehaviour
 {
     public Transform ObstacleSpawnParent;
+    public Transform CollectableSpawnParent;
     [Tooltip("Z축 이동속도")] public float scrollSpeed = 5f; // Z축 이동 속도
     public float scrollIncreseSpeed = 1.2f;
 
@@ -25,6 +26,7 @@ public class ScrollManager : MonoBehaviour
         {
             CheckDistance();
             MoveObstacles();
+            MoveCollectable();
         }
             
     }
@@ -38,6 +40,19 @@ public class ScrollManager : MonoBehaviour
         for (int i = ObstacleSpawnParent.childCount - 1; i >= 0; i--)
         {
             Transform item = ObstacleSpawnParent.GetChild(i);
+            if (item != null && item.position.z <= destroyItem)
+                Destroy(item.gameObject);
+        }
+    }
+    private void MoveCollectable()
+    {
+        if (CollectableSpawnParent == null) return;
+        foreach (Transform tr in CollectableSpawnParent)
+            if (tr != null)
+                tr.position += scrollDirection * scrollSpeed * Time.deltaTime;
+        for (int i = CollectableSpawnParent.childCount - 1; i >= 0; i--)
+        {
+            Transform item = CollectableSpawnParent.GetChild(i);
             if (item != null && item.position.z <= destroyItem)
                 Destroy(item.gameObject);
         }

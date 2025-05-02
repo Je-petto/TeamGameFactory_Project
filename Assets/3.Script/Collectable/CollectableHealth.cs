@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class CollectableHealth : Collectable
 {
-    public ObstacleData data;
+    public int gainHealth = 10;
     private Vector3 randomRotationAxis;
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         randomRotationAxis = Random.insideUnitSphere.normalized;
         if (randomRotationAxis == Vector3.zero)
             randomRotationAxis = Vector3.up;
-
-        // Debug.Log($"장애물 생성! 회전 축: {randomRotationAxis.x:F2}, {randomRotationAxis.y:F2}, {randomRotationAxis.z:F2}");
     }
-    void Update()
+    public override void Update()
     {
+        base.Update();
         transform.Rotate(randomRotationAxis, data.rotationSpeed * Time.deltaTime);
-    }
+    }  
 }

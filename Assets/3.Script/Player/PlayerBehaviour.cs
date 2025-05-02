@@ -107,6 +107,12 @@ public class PlayerBehaviour : MonoBehaviour
         else health -= damage;
         ui.DamageUI();
     }
+    public void OnHealing(int heal)
+    {
+        if (health + heal > maxHealth) health = maxHealth;
+        else health += heal;
+        
+    }
     private void Death()
     {
         if (health == 0 || transform.position.y < -10f)
@@ -125,5 +131,24 @@ public class PlayerBehaviour : MonoBehaviour
     private void Pause()
     {
         if (Input.GetKeyDown(KEYSTOP)) Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Collectable")
+        {
+            Collectable item = col.GetComponent<Collectable>();
+            if (item.data.type == CollectableType.HEALTH)
+                OnHealing(((CollectableHealth)item).gainHealth);
+            else if (item.data.type == CollectableType.SCORE)
+                GameManager.GainScore(((CollectableScore)item).gainScore);
+        }
+        else if (col.gameObject.tag == "Obstacle")
+        {
+            Obstacle obs = col.GetComponent<Obstacle>();
+            OnDamage(obs.data.damage);
+        }
+        
+        Destroy(col.gameObject);
     }
 }
