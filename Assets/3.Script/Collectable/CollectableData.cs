@@ -6,6 +6,7 @@ public enum CollectableType {SCORE, HEALTH, }
 public class CollectableData : ScriptableObject
 {
     public CollectableType type;
+    public float scrollSpeed = 30f;
     public float rotationSpeed = 60f;
     public float weight = 1f;
 }

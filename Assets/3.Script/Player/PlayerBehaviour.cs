@@ -1,16 +1,14 @@
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.Timeline;
+using System.Collections.Generic;
 
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviour : MonoBehaviour
-{   
-    [Header("KeyCode")]
-    private KeyCode KEYSTOP = KeyCode.Escape; 
+{ 
     [Header("Player Data")]
-    public PlayerData data;
-    // public Shooter weapon; // 주석 처리된 부분은 그대로 둠
+    public List<PlayerData> data;
     [ReadOnly] private int maxHealth = 100;
     [ReadOnly] private float xMoveSpeed = 1;
     [ReadOnly] private float jumpForce = 5f;
@@ -26,7 +24,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
-    [SerializeField] MeshRenderer mesh;
     [SerializeField] UIManager ui;
 
 
@@ -49,8 +46,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        Pause();
-        // If not Paused
         if (GameManager.isLive)
         {
             Vector3 oldPosition = transform.position; 
@@ -65,10 +60,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     void SetupData()
     {
-        maxHealth = data.maxHealth;
-        xMoveSpeed = data.xMoveSpeed;
-        jumpForce = data.jumpForce;
-        mesh.enabled = true;
+        maxHealth = data[GameManager.selectPlayer].maxHealth;
+        xMoveSpeed = data[GameManager.selectPlayer].xMoveSpeed;
+        jumpForce = data[GameManager.selectPlayer].jumpForce;
     }
     void MoveMouseWithinLimits()
     {
@@ -121,16 +115,8 @@ public class PlayerBehaviour : MonoBehaviour
                 GameOver 처리
             */
             GameManager.isLive = false;
-            mesh.enabled = false;
             Time.timeScale = 0f;
         }
-    }
-    
-
-    // 추후에 UIManager로 이동될 부분
-    private void Pause()
-    {
-        if (Input.GetKeyDown(KEYSTOP)) Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
     }
 
     void OnTriggerEnter(Collider col)

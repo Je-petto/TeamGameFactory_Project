@@ -1,12 +1,14 @@
 using UnityEngine;
 public enum PlayerEnum
 {
-    Airship = 0
+    F35 = 0,
+    AH64,
+    Su57
 }
 [CreateAssetMenu(menuName = "ScriptableObject/Players", fileName = "Players")]
 public class PlayerData : ScriptableObject
 {
-    public PlayerEnum player = PlayerEnum.Airship;
+    public PlayerEnum player;
     [Header("Health Setup")]
     public int maxHealth = 100;
 

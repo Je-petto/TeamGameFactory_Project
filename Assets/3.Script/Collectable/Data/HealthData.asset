@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: HealthData
   m_EditorClassIdentifier: 
   type: 1
+  scrollSpeed: 15
   rotationSpeed: 45
+  weight: 1

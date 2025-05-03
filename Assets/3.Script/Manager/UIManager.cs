@@ -5,6 +5,11 @@ using CustomInspector;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("KeyCode")]
+    private KeyCode KEYSTOP = KeyCode.Escape; 
+
+    [Header("UI")]
+    [SerializeField] private GameObject optionUI;
     [SerializeField] private Image healthUI;
     [SerializeField] private Image maxHealthUI;
 
@@ -17,11 +22,12 @@ public class UIManager : MonoBehaviour
     [ReadOnly] public int health;
     void Start()
     {
-        maxHealth = player.data.maxHealth;
+        maxHealth = player.data[GameManager.selectPlayer].maxHealth;
     }
 
     void Update()
     {
+        Option();
         SetHealth();
     }
     void SetHealth()
@@ -53,6 +59,16 @@ public class UIManager : MonoBehaviour
             c.a = Mathf.Lerp(1, 0, curve_animation.Evaluate(persent));
             bloodScreen.color = c;
             yield return null;
+        }
+    }
+    bool optionUISwitch = false;
+    public void Option()
+    {
+        if (Input.GetKeyDown(KEYSTOP)) 
+        {
+            optionUISwitch = !optionUISwitch;
+            Time.timeScale = optionUISwitch ? 0f : 1f;
+            optionUI.SetActive(optionUISwitch);
         }
     }
 }
