@@ -36,6 +36,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     [ReadOnly] public bool canUse;
     [SerializeField] UIManager ui;
+    [SerializeField] private GameOverManager gameOverManager;
+    public string playerName;
 
     // 점프 쿨타임이나 바닥 체크 변수가 있으면 좋겠지만, 일단은 기본 기능만 수정.
 
@@ -187,9 +189,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             GameManager.isLive = false;
             Time.timeScale = 0f;
+
+            gameOverManager.ShowGameOverUI(); // GameOver UI 띄우기
         }
     }
-
+    
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Collectable")

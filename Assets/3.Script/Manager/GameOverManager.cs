@@ -9,6 +9,7 @@ public class GameOverManager : MonoBehaviour
     // 게임 오버 UI와 플레이어 이름 입력창을 연결해요 (Unity Inspector에서 지정)
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TMP_InputField playerNameInput;
+    [SerializeField] private PlayerBehaviour player;// Inspector에 할당
 
     // 게임이 시작될 때 게임 오버 UI는 꺼져 있어야 해요
     private void Start()
@@ -19,8 +20,9 @@ public class GameOverManager : MonoBehaviour
     // 게임 오버가 되었을 때 실행되는 함수예요
     public void ShowGameOverUI()
     {
-        Time.timeScale = 0f; // 게임을 멈춰요
-        gameOverUI.SetActive(true); // 게임 오버 UI를 켜요
+        Time.timeScale = 0f; //게임 정지
+        playerNameInput.text = ""; //이름 입력칸 초기화 
+        gameOverUI.SetActive(true); //게임 오버 UI 활성화
     }
 
     // 플레이어가 이름을 입력하고 확인 버튼을 눌렀을 때 실행돼요
