@@ -20,4 +20,10 @@ public class SceneMG : MonoBehaviour
         Debug.Log("스타트 게임");
         SceneManager.LoadScene(2,LoadSceneMode.Single);
     }
+    public void ToRankSystem()
+    {
+        Debug.Log("랭킹 UI로 이동");
+        SceneManager.LoadScene(3,LoadSceneMode.Single);
+    }
+    
 }

@@ -15,7 +15,9 @@ public class RankingManager : MonoBehaviour
     public class PlayerRankData
     {
         public string playerID;
-        public int score;
+        public float distance;
+        public float itemScore;
+        public float totalScore;
     }
 
     [System.Serializable]
@@ -34,12 +36,15 @@ public class RankingManager : MonoBehaviour
         UpdateRankingUI();
     }
 
-    public void SetCurrentPlayerData(string name, int totalScore)
+    // 👉 이름 + 거리 점수 + 아이템 점수 + 총합점 입력
+    public void SetCurrentPlayerData(string name, float distance, float itemScore, float totalScore)
     {
         currentPlayer = new PlayerRankData
         {
             playerID = name,
-            score = totalScore
+            distance = distance,
+            itemScore = itemScore,
+            totalScore = totalScore
         };
     }
 
@@ -51,26 +56,27 @@ public class RankingManager : MonoBehaviour
             return -1;
         }
 
-        // 중복 이름 있으면 기존 데이터 덮어쓰기
+        // 중복 이름이면 덮어쓰기
         var existing = rankingData.rankings.Find(p => p.playerID == currentPlayer.playerID);
         if (existing != null)
         {
-            existing.score = currentPlayer.score;
+            existing.distance = currentPlayer.distance;
+            existing.itemScore = currentPlayer.itemScore;
+            existing.totalScore = currentPlayer.totalScore;
         }
         else
         {
             rankingData.rankings.Add(currentPlayer);
         }
 
-        // 정렬 및 상위 5개 자르기
-        rankingData.rankings.Sort((a, b) => b.score.CompareTo(a.score));
+        // 총점 기준 정렬 후 상위 5개 유지
+        rankingData.rankings.Sort((a, b) => b.totalScore.CompareTo(a.totalScore));
         if (rankingData.rankings.Count > 5)
             rankingData.rankings = rankingData.rankings.GetRange(0, 5);
 
         SaveRankingData();
         UpdateRankingUI();
 
-        // 현재 플레이어 순위 계산
         int rank = rankingData.rankings.FindIndex(p => p.playerID == currentPlayer.playerID);
         return (rank >= 0) ? rank + 1 : -1;
     }
@@ -109,7 +115,9 @@ public class RankingManager : MonoBehaviour
             entry.SetActive(true);
 
             TMP_Text text = entry.GetComponent<TMP_Text>();
-            text.text = $"{i + 1}위: {rankingData.rankings[i].playerID} - {rankingData.rankings[i].score}";
+            var data = rankingData.rankings[i];
+            text.text = $"{i + 1}위: {data.playerID} - {(int)data.totalScore}점";
         }
     }
+
 }

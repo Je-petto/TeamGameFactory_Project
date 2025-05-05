@@ -3,6 +3,6 @@ using System;
 [Serializable]
 public class PlayerRankData
 {
-    public string playerName;
+    public string playerID;
     public int score;
 }

@@ -4,6 +4,6 @@ using System.Collections.Generic;
 [Serializable]
 public class RankingData
 {
-    public List<PlayerRankData> rankings;
+    public List<PlayerRankData> rankings = new List<PlayerRankData>();
 }
 

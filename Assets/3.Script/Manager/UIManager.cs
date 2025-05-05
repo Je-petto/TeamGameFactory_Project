@@ -14,10 +14,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionUI;
     [SerializeField] private Image healthUI;
     [SerializeField] private Image maxHealthUI;
-    [SerializeField] private Text scoreUI;
-    [SerializeField] private Image abilityUI;
     [SerializeField] private List<Sprite> abilitiesSprites = new List<Sprite>();
+    [SerializeField] private Image abilityUI;
+    [SerializeField] private Text scoreUI;
 
+    [Header("InGame")]
     [SerializeField] private Image bloodScreen;
     [SerializeField] private AnimationCurve curve_animation;
     [SerializeField] private PlayerBehaviour player;
