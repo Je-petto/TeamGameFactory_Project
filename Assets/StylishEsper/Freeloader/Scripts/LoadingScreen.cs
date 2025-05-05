@@ -469,7 +469,7 @@ namespace Esper.Freeloader
             if (!string.IsNullOrEmpty(sceneName))
             {
                 this.processes = new LoadingProgressTracker[processes.Length + 1];
-                var operation = SceneManager.LoadSceneAsync(3);
+                var operation = SceneManager.LoadSceneAsync(2);
 
                 this.processes[0] = new LoadingProgressTracker(settings.defaultLoadingText, () => operation.progress * 100f);
 
@@ -588,7 +588,7 @@ namespace Esper.Freeloader
 
         public void IngameScene()
         {
-            SceneManager.LoadScene(4,LoadSceneMode.Single);
+            SceneManager.LoadScene(3,LoadSceneMode.Single);
         }
     }
 }
