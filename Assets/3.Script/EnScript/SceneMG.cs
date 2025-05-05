@@ -9,11 +9,16 @@ public class SceneMG : MonoBehaviour
 
         SceneManager.LoadScene(1,LoadSceneMode.Single);
     }
-
     public void BackToStart()
     {
         Debug.Log("백 투 스타트");
         SceneManager.LoadScene(0,LoadSceneMode.Single);
+    }
+    public void BackToMenu()
+    {
+        Debug.Log("백 투 메뉴뉴");
+
+        SceneManager.LoadScene(2,LoadSceneMode.Single);
     }
     public void StartGame()
     {
@@ -24,6 +29,11 @@ public class SceneMG : MonoBehaviour
     {
         Debug.Log("랭킹 UI로 이동");
         SceneManager.LoadScene(3,LoadSceneMode.Single);
+    }
+    public void GoToLog()
+    {
+        Debug.Log("미션로그그 UI로 이동");
+        SceneManager.LoadScene(4,LoadSceneMode.Single);
     }
     
 }
