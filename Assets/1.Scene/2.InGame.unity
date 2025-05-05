@@ -1131,6 +1131,7 @@ MonoBehaviour:
   - {fileID: 2570633657220438840, guid: 93f06d8ea29806a418cc416cc9d5a437, type: 3}
   - {fileID: 2570633657220438840, guid: 2c15aa5f54e03f543bcc64f111946590, type: 3}
   - {fileID: 4614510723620876622, guid: e3b77d4e8dac4194c93496414379b117, type: 3}
+  - {fileID: 7071374776965048152, guid: 64dea71137fec2c4dbafa181cea76dc9, type: 3}
   SpawnObstacle: {fileID: 5748568137950019443}
   mainCamera: {fileID: 0}
   spawnZ: 200

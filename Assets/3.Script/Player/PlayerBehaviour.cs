@@ -1,6 +1,7 @@
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.Timeline;
+using System.Collections;
 using System.Collections.Generic;
 
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
@@ -14,6 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     [ReadOnly] private int maxHealth = 100;
     [ReadOnly] private float xMoveSpeed = 1;
     [ReadOnly] private float jumpForce = 5f;
+    
 
     // PlayerData에서 가져온 현재 플레이어의 어빌리티 에셋 참조
     private Ability currentAbilityAsset; // PlayerData에 Ability ability; 필드가 있어야 함
@@ -100,7 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     // 점프 입력 감지 및 처리
-    void HandleJumpInput() // 메소드 이름 변경
+    void HandleJumpInput()
     {
         // 마우스 왼쪽 버튼 클릭 감지
         if (Input.GetMouseButtonDown(0) && !GameManager.isPause)
@@ -116,6 +118,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (transform.position.y > yAxisLimit)
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
     }
+
+
+    // 현재 사용 중인 마우스 버튼 (기본은 0, 즉 왼쪽 버튼)
+
     void UseAbility()
     {
         // GameManager.Instance 사용 및 isLive, isPause 체크
@@ -189,14 +195,18 @@ public class PlayerBehaviour : MonoBehaviour
         if (col.gameObject.tag == "Collectable")
         {
             Collectable item = col.GetComponent<Collectable>();
-            if (item.data.type == CollectableType.HEALTH)
+            if (item.data.type == CollectableType.HEALTH) // 체력 +
                 OnHealing(((CollectableHealth)item).gainHealth);
-            else if (item.data.type == CollectableType.SCORE)
+            else if (item.data.type == CollectableType.SCORE) // 점수 +
                 GameManager.GainScore(((CollectableScore)item).gainScore);
-            else if (item.data.type == CollectableType.DOBS)
+            else if (item.data.type == CollectableType.DOBS) //나와있는 장애물 전체 삭제
                 item.ClearObstacles();
-
-
+            else if (item.data.type == CollectableType.REVERS) //아이템 획득시 리버스
+            {
+                CollectableRevers reversItem = item as CollectableRevers;
+                if (reversItem != null)
+                    reversItem.Reverse(this);
+            }
 
         }
         else if (col.gameObject.tag == "Obstacle")
@@ -205,6 +215,13 @@ public class PlayerBehaviour : MonoBehaviour
             OnDamage(obs.data.damage);
         }
 
+
         Destroy(col.gameObject);
+    }
+    public IEnumerator ReverseMovement(float duration)
+    {
+        xMoveSpeed *= -1; // 반전
+        yield return new WaitForSeconds(duration);
+        xMoveSpeed *= -1; // 원래대로 복원
     }
 }
