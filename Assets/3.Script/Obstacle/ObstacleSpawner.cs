@@ -10,7 +10,8 @@ public class ObstacleSpawner : MonoBehaviour
     public Transform SpawnObstacle; //생성된 옵스타클 프리팹이 들어갈 부모
     public Camera mainCamera;
     public int spawnZ = 30; //카메라에서 소환될 거리
-    [Tooltip("초(sec)")] public float spawnInterval = 1f; // 스폰 간격 (초)
+    private float spawnInterval = 1f; // 스폰 간격 (초)
+    [Tooltip("스폰 빈도 곱하기 계수 (클수록 자주 나옴)")] public float spawnRate = 1f;
 
     void Start()
     {
@@ -24,7 +25,8 @@ public class ObstacleSpawner : MonoBehaviour
         while (true)
         {
             SpwanObstacle();
-            yield return new WaitForSeconds(spawnInterval);
+            float interval = spawnInterval / spawnRate;
+            yield return new WaitForSeconds(interval);
         }
     }
 

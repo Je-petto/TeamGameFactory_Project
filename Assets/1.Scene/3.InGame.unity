@@ -791,7 +791,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
 --- !u!1 &1361512633
+=======
+--- !u!1 &1589214966
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -799,6 +803,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
   - component: {fileID: 1361512634}
   - component: {fileID: 1361512635}
   m_Layer: 5
@@ -856,17 +861,28 @@ GameObject:
   - component: {fileID: 1717161259}
   m_Layer: 0
   m_Name: GameOverManager
+=======
+  - component: {fileID: 1589214968}
+  - component: {fileID: 1589214967}
+  m_Layer: 0
+  m_Name: OSP
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
 --- !u!114 &1717161257
+=======
+--- !u!114 &1589214967
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
   m_GameObject: {fileID: 1717161256}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -877,20 +893,42 @@ MonoBehaviour:
   playerNameInput: {fileID: 1904929597}
   player: {fileID: 228228207}
 --- !u!4 &1717161258
+=======
+  m_GameObject: {fileID: 1589214966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6bfab872b84a9409aee815a1401fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intervalTime: 3
+  scrollSpeedMultiplier: 0.1
+  spawnRateMultiplierIncrement: 0.5
+  scrollManager: {fileID: 7900475501678148122}
+  obstacleSpawner: {fileID: 6070322386341589499}
+--- !u!4 &1589214968
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
   m_GameObject: {fileID: 1717161256}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 761.72186, y: 606.3391, z: -8.835542}
+=======
+  m_GameObject: {fileID: 1589214966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -77.139015, y: 32.64582, z: 148.3664}
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
 --- !u!114 &1717161259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,6 +1249,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066445506}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
 --- !u!224 &114431403684941343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2128,7 +2168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 228228207}
   collectablePrefabs:
-  - {fileID: 2570633657220438840, guid: 93f06d8ea29806a418cc416cc9d5a437, type: 3}
+  - {fileID: 5777661922460113276, guid: f01d1986b43ba3b448f82a7525e13fa5, type: 3}
   - {fileID: 2570633657220438840, guid: 2c15aa5f54e03f543bcc64f111946590, type: 3}
   - {fileID: 4614510723620876622, guid: e3b77d4e8dac4194c93496414379b117, type: 3}
   - {fileID: 7071374776965048152, guid: 64dea71137fec2c4dbafa181cea76dc9, type: 3}
@@ -2506,7 +2546,7 @@ MonoBehaviour:
   SpawnObstacle: {fileID: 7170221089557034595}
   mainCamera: {fileID: 0}
   spawnZ: 200
-  spawnInterval: 0.5
+  spawnRate: 1
 --- !u!224 &6322930363383188581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2967,4 +3007,8 @@ SceneRoots:
   - {fileID: 8241946461474299630}
   - {fileID: 6505487472588482994}
   - {fileID: 1345844995088397008}
+<<<<<<< Updated upstream:Assets/1.Scene/3.InGame.unity
   - {fileID: 1717161258}
+=======
+  - {fileID: 1589214968}
+>>>>>>> Stashed changes:Assets/1.Scene/2.InGame.unity
