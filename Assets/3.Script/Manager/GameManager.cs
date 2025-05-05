@@ -3,6 +3,7 @@ using CustomInspector;
 
 public class GameManager : MonoBehaviour
 {
+    public static string playerName = "Player"; 
     public static float itemScore;
     public static float distance;
     public static float totalScore;
