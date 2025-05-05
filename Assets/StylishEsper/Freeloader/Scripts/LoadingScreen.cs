@@ -289,7 +289,7 @@ namespace Esper.Freeloader
             }
 
             InputSystem.onAnyButtonPress.CallOnce(x => Close());
-            
+            InputSystem.onAnyButtonPress.CallOnce(x=>IngameScene());
         }
 
         /// <summary>
@@ -519,6 +519,7 @@ namespace Esper.Freeloader
             else
             {
                 Close();
+                
             }
         }
 
@@ -582,7 +583,7 @@ namespace Esper.Freeloader
             // Disable
             continueLabel.style.display = DisplayStyle.None;
             root.SetEnabled(false);
-            IngameScene();
+            
         }
 
         public void IngameScene()
