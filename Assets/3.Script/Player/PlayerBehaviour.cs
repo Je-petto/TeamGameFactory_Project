@@ -6,7 +6,7 @@ using System.Collections.Generic;
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviour : MonoBehaviour
-{ 
+{
     [Header("Key Code")]
     private KeyCode KEYCODEABILITY = KeyCode.Space;
     [Header("Player Data")]
@@ -19,14 +19,14 @@ public class PlayerBehaviour : MonoBehaviour
     // x = xMin, y = yMin, width = xMax - xMin, height = yMax - yMin
     // 예시: x 범위 -7 ~ 7, y 범위 0 ~ 10
     // 네가 설정한 Rect(-5, 0, 1, 1)는 x=-5~-4, y=0~1 범위로 매우 좁아. 의도한 범위가 맞는지 확인해봐!
-    public Rect movementLimits = new Rect(-5, 0, 10, 1); 
+    public Rect movementLimits = new Rect(-5, 0, 10, 1);
     public float yAxisLimit = 5f;
 
     public int health;
 
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
-    private Coroutine activeAbilityCoroutine = null; 
+    private Coroutine activeAbilityCoroutine = null;
     [SerializeField] UIManager ui;
 
 
@@ -51,7 +51,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (GameManager.isLive)
         {
-            Vector3 oldPosition = transform.position; 
+            Vector3 oldPosition = transform.position;
             // 마우스 이동 및 경계 체크 메소드 호출
             MoveMouseWithinLimits();
             UseAbility();
@@ -106,8 +106,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (Input.GetKeyDown(KEYCODEABILITY))
             {
-                 // currentAbility 변수에 저장된 어빌리티 에셋을 사용 시도합니다.
-                 // activeAbilityCoroutine이 null이거나 완료되었을 때만 새 어빌리티 사용 가능
+                // currentAbility 변수에 저장된 어빌리티 에셋을 사용 시도합니다.
+                // activeAbilityCoroutine이 null이거나 완료되었을 때만 새 어빌리티 사용 가능
                 if (data[GameManager.selectPlayer].ability != null || data[GameManager.selectPlayer].ability.CanUseAbility())
                 {
                     Coroutine startedCoroutine = data[GameManager.selectPlayer].ability.ActivateAbility(this); // 이 스크립트(MonoBehaviour) 인스턴스를 넘겨줌
@@ -130,7 +130,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (health + heal > maxHealth) health = maxHealth;
         else health += heal;
-        
+
     }
     private void Death()
     {
@@ -150,6 +150,10 @@ public class PlayerBehaviour : MonoBehaviour
                 OnHealing(((CollectableHealth)item).gainHealth);
             else if (item.data.type == CollectableType.SCORE)
                 GameManager.GainScore(((CollectableScore)item).gainScore);
+            else if (item.data.type == CollectableType.DOBS)
+                ((CollectableDobs)item).ClearObstacles();
+
+
         }
         else if (col.gameObject.tag == "Obstacle")
         {

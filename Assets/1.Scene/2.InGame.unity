@@ -482,6 +482,8 @@ MonoBehaviour:
   optionUI: {fileID: 1595852046}
   healthUI: {fileID: 132938399}
   maxHealthUI: {fileID: 1930499982}
+  scoreUI: {fileID: 0}
+  abilityUI: {fileID: 0}
   bloodScreen: {fileID: 852679320}
   curve_animation:
     serializedVersion: 2
@@ -508,7 +510,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   player: {fileID: 287262004}
-  cameraShake: {fileID: 1713583065}
   maxHealth: 0
   health: 0
 --- !u!1 &796655708 stripped
@@ -1072,6 +1073,7 @@ MonoBehaviour:
   collectablePrefabs:
   - {fileID: 2570633657220438840, guid: 93f06d8ea29806a418cc416cc9d5a437, type: 3}
   - {fileID: 2570633657220438840, guid: 2c15aa5f54e03f543bcc64f111946590, type: 3}
+  - {fileID: 4614510723620876622, guid: e3b77d4e8dac4194c93496414379b117, type: 3}
   SpawnObstacle: {fileID: 1620095318}
   mainCamera: {fileID: 1751586548}
   spawnZ: 200
@@ -1220,7 +1222,6 @@ MonoBehaviour:
   ScrollIncreseSpeed: 1.1
   increseDistance: 200
   destroyOffsetPos: -5
-  distance: 0
 --- !u!1 &1675982361
 GameObject:
   m_ObjectHideFlags: 0
