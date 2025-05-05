@@ -17,8 +17,6 @@ public class ScrollManager : MonoBehaviour
     private Vector3 scrollDirection = Vector3.back; // 카메라 방향으로 움직임 고정(-z축 방향)
 
     public float destroyOffsetPos = 10f;
-
-    public float distance;
     void Start()
     {
         if (Camera.main != null)
@@ -47,14 +45,13 @@ public class ScrollManager : MonoBehaviour
                 scrollSpeed = obs.data.scrollSpeed;
                 tr.position += scrollDirection * scrollSpeed * scrollIncreseSpeed * Time.deltaTime;
             }
-            distance += scrollSpeed * Time.deltaTime;
-            int currentDistance = (int)(distance / increseDistance);
+            GameManager.distance += scrollSpeed * Time.deltaTime;
+            int currentDistance = (int)(GameManager.distance / increseDistance);
             if (lastDistance != currentDistance)
             {
                 lastDistance = currentDistance;
                 scrollIncreseSpeed = ScrollIncreseSpeed;
-            }
-        GameManager.score = distance;                
+            }                
         for (int i = ObstacleSpawnParent.childCount - 1; i >= 0; i--)
         {
             Transform item = ObstacleSpawnParent.GetChild(i);
@@ -72,14 +69,14 @@ public class ScrollManager : MonoBehaviour
                 colData = tr.gameObject.GetComponent<Collectable>().data;
                 tr.position += scrollDirection * colData.scrollSpeed * scrollIncreseSpeed * Time.deltaTime;
             }
-            distance += colData.scrollSpeed * Time.deltaTime;
-            int currentDistance = (int)(distance / increseDistance);
+            GameManager.distance += colData.scrollSpeed * Time.deltaTime;
+            int currentDistance = (int)(GameManager.distance / increseDistance);
             if (lastDistance != currentDistance)
             {
                 lastDistance = currentDistance;
                 scrollIncreseSpeed = ScrollIncreseSpeed;
             }
-        GameManager.score = distance;
+        GameManager.totalScore = GameManager.distance + GameManager.itemScore;
         for (int i = CollectableSpawnParent.childCount - 1; i >= 0; i--)
         {
             Transform item = CollectableSpawnParent.GetChild(i);
@@ -95,6 +92,5 @@ public class ScrollManager : MonoBehaviour
             obj = (Obstacle)ob;
         else    
             obj = (Collectable)ob;
-        
     }
 }

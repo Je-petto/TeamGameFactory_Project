@@ -7,6 +7,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviour : MonoBehaviour
 { 
+    [Header("Key Code")]
+    private KeyCode KEYCODEABILITY = KeyCode.Space;
     [Header("Player Data")]
     public List<PlayerData> data;
     [ReadOnly] private int maxHealth = 100;
@@ -24,6 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     // Rigidbody 컴포넌트 참조 변수
     private Rigidbody rb;
+    private Coroutine activeAbilityCoroutine = null; 
     [SerializeField] UIManager ui;
 
 
@@ -51,7 +54,7 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 oldPosition = transform.position; 
             // 마우스 이동 및 경계 체크 메소드 호출
             MoveMouseWithinLimits();
-
+            UseAbility();
             // 점프 입력 감지 및 점프 처리 메소드 호출
             HandleJumpInput(); // 메소드 이름 변경
             Death();
@@ -66,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void MoveMouseWithinLimits()
     {
+        if (GameManager.isPause) return;
         Vector3 moveDelta = new Vector3(Input.GetAxis("Mouse X") * xMoveSpeed, 0, Input.GetAxis("Mouse Y") * xMoveSpeed);
         transform.Translate(moveDelta);
 
@@ -82,7 +86,7 @@ public class PlayerBehaviour : MonoBehaviour
     void HandleJumpInput() // 메소드 이름 변경
     {
         // 마우스 왼쪽 버튼 클릭 감지
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameManager.isPause)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -95,6 +99,27 @@ public class PlayerBehaviour : MonoBehaviour
         if (transform.position.y > yAxisLimit)
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
     }
+    // 어빌리티 사용 처리
+    void UseAbility()
+    {
+        if (GameManager.isLive && !GameManager.isPause) // 싱글톤 GameManager 접근 및 isPause 체크
+        {
+            if (Input.GetKeyDown(KEYCODEABILITY))
+            {
+                 // currentAbility 변수에 저장된 어빌리티 에셋을 사용 시도합니다.
+                 // activeAbilityCoroutine이 null이거나 완료되었을 때만 새 어빌리티 사용 가능
+                if (data[GameManager.selectPlayer].ability != null || data[GameManager.selectPlayer].ability.CanUseAbility())
+                {
+                    Coroutine startedCoroutine = data[GameManager.selectPlayer].ability.ActivateAbility(this); // 이 스크립트(MonoBehaviour) 인스턴스를 넘겨줌
+                    if (startedCoroutine != null)
+                        activeAbilityCoroutine = startedCoroutine;
+                }
+                else
+                    Debug.LogWarning("선택된 플레이어에게 할당된 어빌리티가 없습니다.");
+            }
+        }
+    }
+
     public void OnDamage(int damage)
     {
         if (health - damage < 0) health = 0;
@@ -111,9 +136,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (health == 0 || transform.position.y < -10f)
         {
-            /*
-                GameOver 처리
-            */
             GameManager.isLive = false;
             Time.timeScale = 0f;
         }
@@ -134,7 +156,6 @@ public class PlayerBehaviour : MonoBehaviour
             Obstacle obs = col.GetComponent<Obstacle>();
             OnDamage(obs.data.damage);
         }
-        
         Destroy(col.gameObject);
     }
 }

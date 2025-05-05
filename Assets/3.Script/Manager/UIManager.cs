@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using CustomInspector;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionUI;
     [SerializeField] private Image healthUI;
     [SerializeField] private Image maxHealthUI;
+    [SerializeField] private Text scoreUI;
+    [SerializeField] private Image abilityUI;
 
     [SerializeField] private Image bloodScreen;
     [SerializeField] private AnimationCurve curve_animation;
     [SerializeField] private PlayerBehaviour player;
-    [SerializeField] private CameraShake cameraShake;
+    
+    
 
     [ReadOnly] public int maxHealth;
     [ReadOnly] public int health;
@@ -29,6 +33,8 @@ public class UIManager : MonoBehaviour
     {
         Option();
         SetHealth();
+        SetScore();
+        Update_AbiliryUI();
     }
     void SetHealth()
     {
@@ -41,13 +47,6 @@ public class UIManager : MonoBehaviour
     {
         StopCoroutine("OnBloodScreen_co");
         StartCoroutine(OnBloodScreen_co());
-        if (cameraShake != null)
-        {
-            // Shake 메소드 호출!
-            // 흔들림 시간(duration)과 강도(magnitude)를 인자로 넘겨줘.
-            // 이 값들은 원하는 효과에 따라 조절해봐.
-            cameraShake.Shake(0.5f, 100f); // 예: 0.3초 동안 강도 0.2f로 흔들기
-        }
     }
     private IEnumerator OnBloodScreen_co()
     {
@@ -61,14 +60,25 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
-    bool optionUISwitch = false;
+
     public void Option()
     {
-        if (Input.GetKeyDown(KEYSTOP)) 
+        if (Input.GetKeyDown(KEYSTOP))
         {
-            optionUISwitch = !optionUISwitch;
-            Time.timeScale = optionUISwitch ? 0f : 1f;
-            optionUI.SetActive(optionUISwitch);
+
+            GameManager.isPause = !GameManager.isPause;
+            Time.timeScale = GameManager.isPause ? 0f : 1f;
+            optionUI.SetActive(GameManager.isPause);
         }
+    }
+
+    private void SetScore()
+    {
+        scoreUI.text = $"Score : {(int)GameManager.totalScore}";
+    }
+
+    public void Update_AbiliryUI()
+    {
+        abilityUI.enabled = player.data[GameManager.selectPlayer].ability.CanUseAbility();
     }
 }

@@ -1371,9 +1371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79d16ef9750a7c45bd1060fd915e006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: helena
-  distanceScore: 2524
-  itemScore: 378
+  playerID: shkhk
+  distanceScore: 1000
+  itemScore: 200
   nameText: {fileID: 184184622}
   distanceText: {fileID: 792316335}
   itemScoreText: {fileID: 674190412}
