@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using CustomInspector;
@@ -15,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image maxHealthUI;
     [SerializeField] private Text scoreUI;
     [SerializeField] private Image abilityUI;
-    [SerializeField] private TMP_InputField inputfield;
+    [SerializeField] private List<Sprite> abilitiesSprites = new List<Sprite>();
 
     [SerializeField] private Image bloodScreen;
     [SerializeField] private AnimationCurve curve_animation;
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         maxHealth = player.data[GameManager.selectPlayer].maxHealth;
+        abilityUI.sprite = abilitiesSprites[GameManager.selectPlayer];
     }
 
     void Update()
@@ -35,7 +37,7 @@ public class UIManager : MonoBehaviour
         Option();
         SetHealth();
         SetScore();
-        Update_AbiliryUI();
+        Update_AbilityUI();
     }
     void SetHealth()
     {
@@ -78,8 +80,8 @@ public class UIManager : MonoBehaviour
         scoreUI.text = $"Score : {(int)GameManager.totalScore}";
     }
 
-    public void Update_AbiliryUI()
+    public void Update_AbilityUI()
     {
-        abilityUI.enabled = player.data[GameManager.selectPlayer].ability.CanUseAbility();
+        abilityUI.enabled = player.canUse;
     }
 }
