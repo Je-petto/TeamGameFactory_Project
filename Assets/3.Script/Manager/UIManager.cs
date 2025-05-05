@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image maxHealthUI;
     [SerializeField] private Text scoreUI;
     [SerializeField] private Image abilityUI;
+    [SerializeField] private TMP_InputField inputfield;
 
     [SerializeField] private Image bloodScreen;
     [SerializeField] private AnimationCurve curve_animation;
