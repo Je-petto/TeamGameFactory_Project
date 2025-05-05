@@ -5,7 +5,7 @@ using UnityEngine;
 // 아이템을 먹고 나서 화면의 모든 장애물을 삭제
 public class CollectableDobs : Collectable
 {
-    public void ClearObstacles()
+    public override void ClearObstacles()
     {
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 

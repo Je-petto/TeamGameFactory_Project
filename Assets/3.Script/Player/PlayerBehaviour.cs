@@ -6,7 +6,7 @@ using System.Collections.Generic;
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviour : MonoBehaviour
-{ 
+{
     [Header("Key Code")]
     private KeyCode KEYCODEABILITY = KeyCode.Space;
     [Header("Player Data")]
@@ -17,13 +17,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     // PlayerData에서 가져온 현재 플레이어의 어빌리티 에셋 참조
     private Ability currentAbilityAsset; // PlayerData에 Ability ability; 필드가 있어야 함
-    private float currentAbilityLastUseTime = -Mathf.Infinity; 
+    private float currentAbilityLastUseTime = -Mathf.Infinity;
 
     // movementLimits는 Rect (x, y, width, height) 형태로 정의되어 있어.
     // x = xMin, y = yMin, width = xMax - xMin, height = yMax - yMin
     // 예시: x 범위 -7 ~ 7, y 범위 0 ~ 10
     // 네가 설정한 Rect(-5, 0, 1, 1)는 x=-5~-4, y=0~1 범위로 매우 좁아. 의도한 범위가 맞는지 확인해봐!
-    public Rect movementLimits = new Rect(-5, 0, 10, 1); 
+    public Rect movementLimits = new Rect(-5, 0, 10, 1);
     public float yAxisLimit = 5f;
 
     public int health;
@@ -60,7 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (GameManager.isLive)
         {
-            Vector3 oldPosition = transform.position; 
+            Vector3 oldPosition = transform.position;
             // 마우스 이동 및 경계 체크 메소드 호출
             MoveMouseWithinLimits();
             CanUseAbility();
@@ -124,9 +124,9 @@ public class PlayerBehaviour : MonoBehaviour
             // 어빌리티 사용 키 입력 감지
             if (Input.GetKeyDown(KEYCODEABILITY))
             {
-                 // 현재 플레이어에게 어빌리티 에셋이 할당되어 있는지 확인
-                 if (currentAbilityAsset != null)
-                 {
+                // 현재 플레이어에게 어빌리티 에셋이 할당되어 있는지 확인
+                if (currentAbilityAsset != null)
+                {
                     // *** 쿨타임 체크 로직 ***
                     // 현재 시간 >= 마지막 사용 시간 + 어빌리티 에셋의 쿨다운 시간
                     // canUse = Time.time >= currentAbilityLastUseTime + currentAbilityAsset.coolDown;
@@ -151,7 +151,7 @@ public class PlayerBehaviour : MonoBehaviour
                     else
                         // 쿨타임 중이라면 남은 시간 표시 (소수점 둘째 자리까지)
                         Debug.LogWarning($"어빌리티 사용 불가능: 쿨다운 중입니다. 남은 시간: {currentAbilityLastUseTime + currentAbilityAsset.coolDown - Time.time:F2} 초");
-                        // TODO: 어빌리티 사용 불가능 UI나 사운드 효과
+                    // TODO: 어빌리티 사용 불가능 UI나 사운드 효과
                 }
                 else
                     Debug.LogWarning("선택된 플레이어에게 할당된 어빌리티 에셋이 없습니다.");
@@ -173,7 +173,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (health + heal > maxHealth) health = maxHealth;
         else health += heal;
-        
+
     }
     private void Death()
     {
@@ -193,12 +193,18 @@ public class PlayerBehaviour : MonoBehaviour
                 OnHealing(((CollectableHealth)item).gainHealth);
             else if (item.data.type == CollectableType.SCORE)
                 GameManager.GainScore(((CollectableScore)item).gainScore);
+            else if (item.data.type == CollectableType.DOBS)
+                item.ClearObstacles();
+
+
+
         }
         else if (col.gameObject.tag == "Obstacle")
         {
             Obstacle obs = col.GetComponent<Obstacle>();
             OnDamage(obs.data.damage);
         }
+
         Destroy(col.gameObject);
     }
 }

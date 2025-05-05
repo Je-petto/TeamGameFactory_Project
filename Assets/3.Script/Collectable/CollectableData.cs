@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum CollectableType {SCORE, HEALTH, DOBS}
+public enum CollectableType {SCORE, HEALTH, DOBS, REVERS}
 
 [CreateAssetMenu(menuName = "ScriptableObject/Collectable", fileName = "Collectable")]
 public class CollectableData : ScriptableObject
