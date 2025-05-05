@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/1.Scene/1.GameLobby.unity
     guid: 3a388b74b23a53b4fb1ff10af4877be7
   - enabled: 1
-    path: Assets/1.Scene/2.InGame.unity
+    path: Assets/1.Scene/2.GameLoading.unity
+    guid: fe06a7677e8c84f498ee0010fa6ef9c8
+  - enabled: 1
+    path: Assets/1.Scene/3.InGame.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/1.Scene/3.GameResult.unity
+    path: Assets/1.Scene/4.GameResult.unity
     guid: 8cd46aafb1160eb4eaec1c15963a170a
   - enabled: 1
-    path: Assets/1.Scene/4.MissionLog.unity
+    path: Assets/1.Scene/5.MissionLog.unity
     guid: 9a1cceac350780e4ebb5db0ae708705d
   m_configObjects: {}
