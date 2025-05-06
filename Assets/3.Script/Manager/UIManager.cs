@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Sprite> abilitiesSprites = new List<Sprite>();
     [SerializeField] private Image abilityUI;
     [SerializeField] private Text scoreUI;
+    [SerializeField] private GameObject gameOverUI;
 
     [Header("InGame")]
     [SerializeField] private Image bloodScreen;
@@ -68,7 +69,7 @@ public class UIManager : MonoBehaviour
 
     public void Option()
     {
-        if (Input.GetKeyDown(KEYSTOP))
+        if (Input.GetKeyDown(KEYSTOP) && !gameOverUI.activeSelf)
         {
 
             GameManager.isPause = !GameManager.isPause;
