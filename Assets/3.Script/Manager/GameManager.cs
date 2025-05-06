@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public static void ResetGame()
     {
+        selectPlayer = 0;
         totalScore = 0;
         itemScore = 0;
         distance = 0;
