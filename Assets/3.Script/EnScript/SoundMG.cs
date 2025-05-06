@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SoundMG : MonoBehaviour
 {
@@ -11,15 +12,31 @@ public class SoundMG : MonoBehaviour
     public List<AudioClip> scenesClip = new List<AudioClip>();
 
     public AudioSource BGMaudio, SFXaudio;
-    [SerializeField] private AudioClip ButtonClip;
+    [SerializeField] public AudioClip ButtonClip;
+    [SerializeField] public string buttonClipPath = "ButtonSound";
 
     public void Awake()
-    { 
-        if( Instance == null)
+    {
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        
+            var auDio = GetComponents<AudioSource>();
+            if (auDio.Length >= 2)
+            {
+                BGMaudio = auDio[0];
+                SFXaudio = auDio[1];
+
+            }
+            // 여기서 버튼 효과음 클립을 Resources에서 동적으로 로드
+            if (ButtonClip == null)
+            {
+                ButtonClip = Resources.Load<AudioClip>(buttonClipPath);
+                if (ButtonClip == null)
+                {
+                    Debug.LogWarning("ButtonClip 로드 실패! 경로 확인 필요: " + buttonClipPath);
+                }
+            }
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -29,27 +46,41 @@ public class SoundMG : MonoBehaviour
         }
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode loadScene)
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode loadScene)
     {
-        PlayScencBgm();
+        PlaySceneBgm();
+        if (ButtonClip == null)
+        {
+            Button button = FindObjectOfType<Button>(); // 버튼을 찾습니다 (더 구체적인 버튼을 찾을 수도 있음)
+            if (button != null && SoundMG.Instance != null)
+            {
+                button.onClick.AddListener(SoundMG.Instance.OnButtonSound);
+            }
+        }
     }
 
-    public void PlayScencBgm()
+    public void PlaySceneBgm()
     {
         int Scene_i = SceneManager.GetActiveScene().buildIndex;
 
-        if( Scene_i < scenesClip.Count && scenesClip[Scene_i] != null)
+        if (Scene_i < scenesClip.Count && scenesClip[Scene_i] != null)
         {
             BGMaudio.Stop();
             BGMaudio.clip = scenesClip[Scene_i];
-            BGMaudio.loop =true;
+            BGMaudio.loop = true;
             BGMaudio.Play();
         }
     }
 
     public void OnButtonSound()
     {
-        SFXaudio.clip = ButtonClip;
-        SFXaudio.PlayOneShot(ButtonClip, 3f);
+        //SFXaudio.clip = ButtonClip;
+        if (ButtonClip != null)
+            SFXaudio.PlayOneShot(ButtonClip, 3f);
+        else
+        {
+            Debug.LogWarning("ButtonClip이 null입니다!");
+        }
     }
 }

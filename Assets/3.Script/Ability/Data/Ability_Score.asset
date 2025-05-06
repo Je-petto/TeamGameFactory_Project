@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb4efacccaa21542968759bcc2f0c29, type: 3}
-  m_Name: Player_Su57
+  m_Script: {fileID: 11500000, guid: cf55c684674de79468ce973d3040abbe, type: 3}
+  m_Name: Ability_Score
   m_EditorClassIdentifier: 
-  player: 2
-  maxHealth: 85
-  xMoveSpeed: 0.45
-  jumpForce: 6.5
-  ability: {fileID: 11400000, guid: 44b2e9e3805a23c4c82e9b4f3022e430, type: 2}
+  duration: 6
+  coolDown: 12
+  scoreBoost: 1.5

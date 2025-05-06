@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static bool isLive = true;
     public static bool isPause = false;
     public static int selectPlayer = 0;
+    public static bool isInvincible = false;
+    public static float collectableIncresePersent = 1f; 
 
     public static void GainScore(int addScore)
     {

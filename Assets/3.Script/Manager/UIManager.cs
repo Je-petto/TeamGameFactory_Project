@@ -47,8 +47,6 @@ public class UIManager : MonoBehaviour
         
         float xScale = (maxHealth > 0) ? (float)health / maxHealth : 0f;
         healthUI.transform.localScale = new Vector3(xScale, 1f, 1f);
-
-        Debug.Log($"MaxHealth : {maxHealth}, health : {health}");
     }
     public void DamageUI()
     {
