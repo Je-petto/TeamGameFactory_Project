@@ -15,6 +15,7 @@ public class SceneMG : MonoBehaviour
     }
     public void StartGame() //InGame 씬
     {
+        Time.timeScale = 1;
         Debug.Log("인게임 씬 전환 완료");
         SceneManager.LoadScene(2,LoadSceneMode.Single);
         //로비->로딩->인게임 데이터 넘겨주기
