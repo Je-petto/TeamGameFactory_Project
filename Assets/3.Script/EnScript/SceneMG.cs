@@ -20,12 +20,16 @@ public class SceneMG : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(3,LoadSceneMode.Single);
+
         Debug.Log(Time.timeScale = 1);
+        Debug.Log("인게임 씬 전환 완료");
         //로비->로딩->인게임 데이터 넘겨주기
     }
     public void ToRankSystem() //랭크 씬
     {
+        Debug.Log("랭크 씬 전환 완료");
         SceneManager.LoadScene(4,LoadSceneMode.Single);
+
     }
     public void GoToLog() //로그 씬
     {
