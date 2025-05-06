@@ -2260,9 +2260,9 @@ MonoBehaviour:
   healthUI: {fileID: 2319035702452351771}
   maxHealthUI: {fileID: 452770003321312671}
   abilitiesSprites:
-  - {fileID: 21300000, guid: 0161855221fea1d4a838fa168e345120, type: 3}
-  - {fileID: 21300000, guid: fca8ccf454c980e4ba12cf1bb4ca7929, type: 3}
-  - {fileID: 21300000, guid: 9031ddff7d13d6c4fad61bb77e53414f, type: 3}
+  - {fileID: 21300000, guid: ff885d2457ed2194885eb7115ae6f535, type: 3}
+  - {fileID: 21300000, guid: 07230c17de668be488c33476fe450846, type: 3}
+  - {fileID: 21300000, guid: 811c3208748e9d94aa65018a05d2a62b, type: 3}
   abilityUI: {fileID: 1256054142956753752}
   scoreUI: {fileID: 4223176443066899457}
   bloodScreen: {fileID: 241517751212534469}
