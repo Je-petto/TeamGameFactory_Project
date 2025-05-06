@@ -30,5 +30,6 @@ public class SceneMG : MonoBehaviour
     {
         Debug.Log("미션 로그 씬 전환 완료");
         SceneManager.LoadScene(4,LoadSceneMode.Single);
-    } 
+    }
+    
 }
