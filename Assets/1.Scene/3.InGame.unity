@@ -2551,7 +2551,9 @@ MonoBehaviour:
   player: {fileID: 228228207}
   obstaclePrefabs:
   - {fileID: 100000, guid: bd69b75a2d6f9484389276e44f83c616, type: 3}
+  - {fileID: 100000, guid: 77ee5bc1cae2b3e4ab780b451c3e9a4a, type: 3}
   - {fileID: 100000, guid: 68c3c0615662c6144836fe4edb48f9b2, type: 3}
+  - {fileID: 8539081546312405284, guid: 5e92e0580c99bed4c974a12f0a970656, type: 3}
   SpawnObstacle: {fileID: 7170221089557034595}
   mainCamera: {fileID: 0}
   spawnZ: 200

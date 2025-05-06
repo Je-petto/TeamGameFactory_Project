@@ -15,4 +15,4 @@ MonoBehaviour:
   damage: 10
   scrollSpeed: 25
   rotationSpeed: 120
-  weight: 1
+  weight: 2

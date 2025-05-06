@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7144481012463244879}
   - component: {fileID: 8262217628289439712}
   m_Layer: 8
-  m_Name: Enemy_Asteroid
+  m_Name: Enemy_Asteroid 1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22021ecd684891549a9889fa0e221d21, type: 2}
+  - {fileID: 2100000, guid: a3c7d8a6513dbd14ab14a6d6a2bbe488, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
