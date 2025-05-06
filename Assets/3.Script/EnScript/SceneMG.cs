@@ -3,31 +3,28 @@ using UnityEngine.SceneManagement;
 
 public class SceneMG : MonoBehaviour
 {
-    public void TapToStart()
-    {
-        SceneManager.LoadScene(1,LoadSceneMode.Single);
-    }
-    public void BackToStart()
+    public void BackToStart() // 메인화면 씬.
     {
         SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
-    public void BackToMainScene()
+    public void LobbyScene() // 로비화면 씬.
     {
         SceneManager.LoadScene(1,LoadSceneMode.Single);
     }
-    public void LoadingScene()
+    
+    public void LoadingScene() //로딩 화면 씬.
     {
         SceneManager.LoadScene(2,LoadSceneMode.Single);
     }
-    public void StartGame()
+    public void StartGame() //InGame 씬
     {
         SceneManager.LoadScene(3,LoadSceneMode.Single);
     }
-    public void ToRankSystem()
+    public void ToRankSystem() //랭크 씬
     {
         SceneManager.LoadScene(4,LoadSceneMode.Single);
     }
-    public void GoToLog()
+    public void GoToLog() //로그 씬
     {
         SceneManager.LoadScene(5,LoadSceneMode.Single);
     }
