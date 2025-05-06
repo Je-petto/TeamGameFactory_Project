@@ -896,6 +896,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLog
       objectReference: {fileID: 0}
+    - target: {fileID: 7613879901081069614, guid: 5fd4b93060ee2d94db9a7e4d394d5d56, type: 3}
+      propertyPath: m_Name
+      value: Start Button
+      objectReference: {fileID: 0}
     - target: {fileID: 8037828073361953498, guid: 5fd4b93060ee2d94db9a7e4d394d5d56, type: 3}
       propertyPath: m_SizeDelta.x
       value: 80

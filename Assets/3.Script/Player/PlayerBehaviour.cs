@@ -36,7 +36,8 @@ public class PlayerBehaviour : MonoBehaviour
     private Coroutine activeAbilityCoroutine = null;
 
     [ReadOnly] public bool canUse;
-    [SerializeField] UIManager ui;
+    [SerializeField] private UIManager ui;
+    [SerializeField] private Material material;
     [SerializeField] private GameOverManager gameOverManager;
     [SerializeField] TMP_InputField playerName;
 
@@ -196,13 +197,13 @@ public class PlayerBehaviour : MonoBehaviour
     
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Collectable")
+        if (col.gameObject.tag == "Collectable" )
         {
             Collectable item = col.GetComponent<Collectable>();
             if (item.data.type == CollectableType.HEALTH) // 체력 +
-                OnHealing(((CollectableHealth)item).gainHealth);
+                OnHealing((int)(((CollectableHealth)item).gainHealth * GameManager.collectableIncresePersent));
             else if (item.data.type == CollectableType.SCORE) // 점수 +
-                GameManager.GainScore(((CollectableScore)item).gainScore);
+                GameManager.GainScore((int)(((CollectableScore)item).gainScore * GameManager.collectableIncresePersent));
             else if (item.data.type == CollectableType.DOBS) //나와있는 장애물 전체 삭제
                 item.ClearObstacles();
             else if (item.data.type == CollectableType.REVERS) //아이템 획득시 리버스
@@ -213,7 +214,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
         }
-        else if (col.gameObject.tag == "Obstacle")
+        else if (col.gameObject.tag == "Obstacle" && !GameManager.isInvincible)
         {
             Obstacle obs = col.GetComponent<Obstacle>();
             OnDamage(obs.data.damage);

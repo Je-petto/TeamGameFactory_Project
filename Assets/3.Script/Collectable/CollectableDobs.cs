@@ -10,7 +10,7 @@ public class CollectableDobs : Collectable
 
     public override void Awake()
     {
-        base.Awake();
+        base.Awake();//Collectable에 있는 Awake 소환환
         randomRotationAxis = Random.insideUnitSphere.normalized; //무작위 회전축 설정
         if (randomRotationAxis == Vector3.zero)
             randomRotationAxis = Vector3.up; //회전이 0이되면 안되므로 y축으로 설정
