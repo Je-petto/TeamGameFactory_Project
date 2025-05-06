@@ -44,8 +44,6 @@ public class PlayerBehaviour : MonoBehaviour
     //==================================================================================
     void Awake()
     {
-        health = maxHealth;
-
         // Rigidbody 컴포넌트 가져오기
         rb = GetComponent<Rigidbody>();
         if (rb == null)
@@ -85,6 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
             currentAbilityAsset = selectedData.ability;
         }
         maxHealth = data[GameManager.selectPlayer].maxHealth;
+        health = maxHealth;
         xMoveSpeed = data[GameManager.selectPlayer].xMoveSpeed;
         jumpForce = data[GameManager.selectPlayer].jumpForce;
     }

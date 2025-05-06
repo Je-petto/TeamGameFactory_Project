@@ -406,8 +406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 66.4}
+  m_SizeDelta: {x: 220, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405619338
 MonoBehaviour:
@@ -915,11 +915,11 @@ PrefabInstance:
     - target: {fileID: 5859568219040250468, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
       propertyPath: data.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 184e6ae09c97f144ba33319962f29f09, type: 2}
+      objectReference: {fileID: 11400000, guid: c5ebe1350b90e0b41aec903b8f494601, type: 2}
     - target: {fileID: 5859568219040250468, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
       propertyPath: data.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: c5ebe1350b90e0b41aec903b8f494601, type: 2}
+      objectReference: {fileID: 11400000, guid: 184e6ae09c97f144ba33319962f29f09, type: 2}
     - target: {fileID: 5859568219040250468, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
       propertyPath: data.Array.data[2]
       value: 
@@ -1195,8 +1195,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -79.5}
-  m_SizeDelta: {x: 307, y: 50}
+  m_AnchoredPosition: {x: 0, y: -100.9}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394921360
 MonoBehaviour:
@@ -1245,8 +1245,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.37
-  m_fontSizeBase: 38.37
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2094,7 +2094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2054131212450385844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,7 +2347,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 324.2, y: 200}
+  m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4216245308398442814
 MonoBehaviour:
@@ -3017,11 +3017,11 @@ RectTransform:
   m_Children:
   - {fileID: 6322930363383188581}
   - {fileID: 3031472253451461354}
-  - {fileID: 114431403684941343}
-  - {fileID: 4091835861104388361}
   - {fileID: 4032363422535579127}
   - {fileID: 5417941425213259229}
   - {fileID: 1193608720}
+  - {fileID: 114431403684941343}
+  - {fileID: 4091835861104388361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

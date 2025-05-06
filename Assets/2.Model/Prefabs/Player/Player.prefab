@@ -179,7 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dfe86a12acad74d9c8486c16141b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: c5ebe1350b90e0b41aec903b8f494601, type: 2}
+  data:
+  - {fileID: 11400000, guid: c5ebe1350b90e0b41aec903b8f494601, type: 2}
+  - {fileID: 11400000, guid: 184e6ae09c97f144ba33319962f29f09, type: 2}
+  - {fileID: 11400000, guid: 9c3f362279447e34da4d0731d2892b05, type: 2}
   movementLimits:
     serializedVersion: 2
     x: -5
@@ -188,7 +191,10 @@ MonoBehaviour:
     height: 1
   yAxisLimit: 5
   health: 0
-  mesh: {fileID: 2007697213237137708}
+  canUse: 0
+  ui: {fileID: 0}
+  gameOverManager: {fileID: 0}
+  playerName: 
 --- !u!1 &8564887566535794617
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,6 +58,11 @@ public class CharacterChange : MonoBehaviour
         spawnedCharacters.RemoveAt(0);
         spawnedCharacters.Add(firstCharacter);
 
+        if (GameManager.selectPlayer == 2)
+            GameManager.selectPlayer = 0;
+        else
+            GameManager.selectPlayer++;
+
         //변경된 리스트 순서를 따라서 캐릭터들의 위치를 계속 업데이트 업데이트
         UpdateCharacterTransforms();
     }
@@ -70,6 +75,11 @@ public class CharacterChange : MonoBehaviour
         GameObject lastCharacter = spawnedCharacters[spawnedCharacters.Count - 1];
         spawnedCharacters.RemoveAt(spawnedCharacters.Count - 1);
         spawnedCharacters.Insert(0, lastCharacter);
+
+        if (GameManager.selectPlayer == 0)
+            GameManager.selectPlayer = 2;
+        else
+            GameManager.selectPlayer--;
 
         //변경된 리스트 순서에 따라 캐릭터들의 Transform 업데이트
         UpdateCharacterTransforms();

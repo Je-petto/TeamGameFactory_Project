@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         maxHealth = player.data[GameManager.selectPlayer].maxHealth;
+        health = player.health;
         abilityUI.sprite = abilitiesSprites[GameManager.selectPlayer];
     }
 
@@ -46,6 +47,8 @@ public class UIManager : MonoBehaviour
         
         float xScale = (maxHealth > 0) ? (float)health / maxHealth : 0f;
         healthUI.transform.localScale = new Vector3(xScale, 1f, 1f);
+
+        Debug.Log($"MaxHealth : {maxHealth}, health : {health}");
     }
     public void DamageUI()
     {
