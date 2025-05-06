@@ -22,7 +22,7 @@ public class SpawnItem : MonoBehaviour
         Vector3 randomPos = new Vector3(randomXAxis, randomYAxis, spawnZ);
 
         //Viewport 좌표를 월드 좌표로 변환 (z는 카메라에서의 거리)
-//        Vector3 worldPos = mainCamera.ViewportToWorldPoint(new Vector3(randomViewportPos.x, randomViewportPos.y, spawnZ));
+        //Vector3 worldPos = mainCamera.ViewportToWorldPoint(new Vector3(randomViewportPos.x, randomViewportPos.y, spawnZ));
 
         //아이템 생성 프리팹을 부모 오브젝트 밑에 생성
         GameObject prefab = itemPrefabs[Random.Range(0, itemPrefabs.Count)];

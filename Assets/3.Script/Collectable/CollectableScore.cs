@@ -12,7 +12,7 @@ public class CollectableScore : Collectable
         randomRotationAxis = Random.insideUnitSphere.normalized;
         if (randomRotationAxis == Vector3.zero)
             randomRotationAxis = Vector3.up;
-            //무작위 회전축 설정하여 y축으로 설정
+        //무작위 회전축 설정하여 y축으로 설정
     }
     public override void Update()
     {

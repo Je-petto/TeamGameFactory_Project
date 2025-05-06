@@ -19,6 +19,7 @@ public class SceneMG : MonoBehaviour
     public void StartGame() //InGame 씬
     {
         SceneManager.LoadScene(3,LoadSceneMode.Single);
+        //로비->로딩->인게임 데이터 넘겨주기
     }
     public void ToRankSystem() //랭크 씬
     {
