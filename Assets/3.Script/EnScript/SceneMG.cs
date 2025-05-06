@@ -18,7 +18,9 @@ public class SceneMG : MonoBehaviour
     }
     public void StartGame() //InGame 씬
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(3,LoadSceneMode.Single);
+
     }
     public void ToRankSystem() //랭크 씬
     {

@@ -49,16 +49,26 @@ public class CharacterChange : MonoBehaviour
         }
     }
 
+    private int selectPlayer = 0;
+
     public void OnLButtonSwap()
     {
-        if (spawnedCharacters.Count <= 1) return; // 스왑할 캐릭터가 없거나 1개면 동작 안 함
+        if (spawnedCharacters.Count <= 1) return; // 스왑 할 캐릭터가 없거나 1개면 동작 안 함
 
         //spawnedCharacters 리스트를 왼쪽으로 한 칸씩 이동하며 순환
         GameObject firstCharacter = spawnedCharacters[0];
         spawnedCharacters.RemoveAt(0);
         spawnedCharacters.Add(firstCharacter);
 
-        //변경된 리스트 순서를 따라서 캐릭터들의 위치를 계속 업데이트 업데이트
+        if (selectPlayer == 2)
+            selectPlayer = 0;
+        else
+            selectPlayer++;
+
+        GameManager.selectPlayer = selectPlayer;
+        Debug.Log($"L : {selectPlayer}");
+
+        //변경된 리스트 순서를 따라서 캐릭터들의 위치를 계속 업데이트
         UpdateCharacterTransforms();
     }
 
@@ -66,10 +76,18 @@ public class CharacterChange : MonoBehaviour
     {
         if (spawnedCharacters.Count <= 1) return;
 
-        //spawnedCharacters 리스트를 오른쪽으로 한 칸씩 이동하며며 순환 
+        //spawnedCharacters 리스트를 오른쪽으로 한 칸씩 이동하며 순환 
         GameObject lastCharacter = spawnedCharacters[spawnedCharacters.Count - 1];
         spawnedCharacters.RemoveAt(spawnedCharacters.Count - 1);
         spawnedCharacters.Insert(0, lastCharacter);
+
+        if (selectPlayer == 0)
+            selectPlayer = 2;
+        else
+            selectPlayer--;
+
+        GameManager.selectPlayer = selectPlayer;
+        Debug.Log($"R : {selectPlayer}");
 
         //변경된 리스트 순서에 따라 캐릭터들의 Transform 업데이트
         UpdateCharacterTransforms();
