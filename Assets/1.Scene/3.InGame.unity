@@ -2018,6 +2018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2924784379200664564}
   - component: {fileID: 7701959060290888835}
+  - component: {fileID: 7701959060290888836}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2177,8 +2178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 228228207}
   collectablePrefabs:
-  - {fileID: 2570633657220438840, guid: 93f06d8ea29806a418cc416cc9d5a437, type: 3}
-  - {fileID: 2570633657220438840, guid: 2c15aa5f54e03f543bcc64f111946590, type: 3}
+  - {fileID: 8144878045767558910, guid: 2c15aa5f54e03f543bcc64f111946590, type: 3}
+  - {fileID: 7859224834240827593, guid: 93f06d8ea29806a418cc416cc9d5a437, type: 3}
   - {fileID: 4614510723620876622, guid: e3b77d4e8dac4194c93496414379b117, type: 3}
   - {fileID: 7071374776965048152, guid: 64dea71137fec2c4dbafa181cea76dc9, type: 3}
   SpawnObstacle: {fileID: 5748568137950019443}
@@ -2811,6 +2812,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7701959060290888836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273872321354506531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!114 &7900475501678148122
 MonoBehaviour:
   m_ObjectHideFlags: 0
