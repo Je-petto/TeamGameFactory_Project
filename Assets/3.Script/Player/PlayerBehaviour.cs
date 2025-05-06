@@ -186,7 +186,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void Death()
     {
-        if (health == 0 || transform.position.y < -10f)
+        if (health == 0 || transform.position.y < -yAxisLimit)
         {
             GameManager.isLive = false;
             Time.timeScale = 0f;
