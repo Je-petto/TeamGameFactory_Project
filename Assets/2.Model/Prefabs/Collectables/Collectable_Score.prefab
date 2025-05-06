@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b117146be126889469455724d7d13113, type: 2}
-  gainScore: 10
+  gainScore: 100
