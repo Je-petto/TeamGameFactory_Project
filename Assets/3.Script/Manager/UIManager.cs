@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         maxHealth = player.data[GameManager.selectPlayer].maxHealth;
-        health = player.health;
+        health = maxHealth;
         abilityUI.sprite = abilitiesSprites[GameManager.selectPlayer];
     }
 

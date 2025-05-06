@@ -21,6 +21,7 @@ public class GameOverManager : MonoBehaviour
     public void ShowGameOverUI()
     {
         gameOverUI.SetActive(true); //게임 오버 UI 활성화
+        GameManager.selectPlayer = 0;
         playerNameInput.text = ""; //이름 입력칸 초기화 
         Time.timeScale = 0f; //게임 정지
     }
