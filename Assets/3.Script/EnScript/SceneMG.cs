@@ -5,15 +5,18 @@ public class SceneMG : MonoBehaviour
 {
     public void BackToStart() // 메인화면 씬.
     {
+        Debug.Log("메인화면 씬 전환 완료");        
         SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
     public void LobbyScene() // 로비화면 씬.
     {
+        Debug.Log("로비 씬 전환 완료");  
         SceneManager.LoadScene(1,LoadSceneMode.Single);
     }
     
     public void LoadingScene() //로딩 화면 씬.
     {
+        Debug.Log("로딩 씬 전환 완료");  
         SceneManager.LoadScene(2,LoadSceneMode.Single);
     }
     public void StartGame() //InGame 씬
@@ -33,6 +36,7 @@ public class SceneMG : MonoBehaviour
     }
     public void GoToLog() //로그 씬
     {
+        Debug.Log("미션 로그 씬 전환 완료");
         SceneManager.LoadScene(5,LoadSceneMode.Single);
     }
     

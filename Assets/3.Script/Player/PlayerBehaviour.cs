@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Timeline;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]
@@ -37,7 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
     [ReadOnly] public bool canUse;
     [SerializeField] UIManager ui;
     [SerializeField] private GameOverManager gameOverManager;
-    public string playerName;
+    [SerializeField] TMP_InputField playerName;
 
     // 점프 쿨타임이나 바닥 체크 변수가 있으면 좋겠지만, 일단은 기본 기능만 수정.
 

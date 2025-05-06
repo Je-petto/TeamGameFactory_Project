@@ -16,4 +16,13 @@ public class GameManager : MonoBehaviour
         itemScore += addScore;
         totalScore += addScore;
     }
+
+    public static void ResetGame()
+    {
+        totalScore = 0;
+        itemScore = 0;
+        distance = 0;
+        isLive = true;
+        isPause = false;
+    }
 }

@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
         
                 Instantiate(playerMeshes[GameManager.selectPlayer], Vector3.zero, direction, playerObj.transform);
             }
-                
+
+        GameManager.ResetGame(); 
     }
 }

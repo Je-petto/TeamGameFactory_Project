@@ -264,7 +264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117977348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: "ENTER PLAYER\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4ade57b817ef34da789287f25f2dc4, type: 2}
   m_sharedMaterial: {fileID: 2296167315673218886, guid: 9f4ade57b817ef34da789287f25f2dc4, type: 2}
@@ -783,7 +783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1193608720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "ENTER PLAYER\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4ade57b817ef34da789287f25f2dc4, type: 2}
   m_sharedMaterial: {fileID: 2296167315673218886, guid: 9f4ade57b817ef34da789287f25f2dc4, type: 2}
@@ -988,6 +988,10 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 1033083894949023355}
+    - target: {fileID: 5859568219040250468, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
+      propertyPath: playerName
+      value: 
+      objectReference: {fileID: 1904929597}
     - target: {fileID: 5859568219040250468, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
       propertyPath: gameOverManager
       value: 
@@ -1580,7 +1584,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: ENTER PLAYER
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
