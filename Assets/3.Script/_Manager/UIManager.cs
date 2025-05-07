@@ -8,7 +8,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [Header("KeyCode")]
-    private KeyCode KEYSTOP = KeyCode.Escape; 
+    private KeyCode KEYSTOP = KeyCode.Escape;
 
     [Header("UI")]
     [SerializeField] private GameObject optionUI;
@@ -23,8 +23,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image bloodScreen;
     [SerializeField] private AnimationCurve curve_animation;
     [SerializeField] private PlayerBehaviour player;
-    
-    
+
+
 
     [ReadOnly] public int maxHealth;
     [ReadOnly] public int health;
@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     void SetHealth()
     {
         health = player.health;
-        
+
         float xScale = (maxHealth > 0) ? (float)health / maxHealth : 0f;
         healthUI.transform.localScale = new Vector3(xScale, 1f, 1f);
     }
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator OnBloodScreen_co()
     {
         float persent = 0f;
-        while(persent < 1)
+        while (persent < 1)
         {
             persent += Time.deltaTime;
             Color c = bloodScreen.color;
@@ -71,13 +71,17 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KEYSTOP) && !gameOverUI.activeSelf)
         {
-
             GameManager.isPause = !GameManager.isPause;
             Time.timeScale = GameManager.isPause ? 0f : 1f;
             optionUI.SetActive(GameManager.isPause);
+
+            if (GameManager.isPause)
+            {
+                // UI가 켜질 때 버튼 효과음 리스너 등록
+                SoundMG.Instance.ButtonSoundsCall(optionUI);
+            }
         }
     }
-
     private void SetScore()
     {
         scoreUI.text = $"Score : {(int)GameManager.totalScore}";

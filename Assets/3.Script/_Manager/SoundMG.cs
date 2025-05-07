@@ -90,11 +90,23 @@ public class SoundMG : MonoBehaviour
         PlaySceneBgm(); // 새로 로드된 씬에 맞는 BGM을 항상 재생
 
         // 버튼에 효과음 추가
-        Button[] buttons = FindObjectsOfType<Button>();
+        Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
+        foreach (Button btn in buttons)
+        {
+            if (btn.gameObject.scene.IsValid())
+            {
+                btn.onClick.RemoveListener(OnButtonSound);
+                btn.onClick.AddListener(OnButtonSound);
+            }
+        }
+    }
+    public void ButtonSoundsCall(GameObject parent)
+    {
+        Button[] buttons = parent.GetComponentsInChildren<Button>(true); // 비활성 포함
         foreach (Button btn in buttons)
         {
             btn.onClick.RemoveListener(OnButtonSound); // 중복 방지
-            btn.onClick.AddListener(OnButtonSound);    // 효과음 등록
+            btn.onClick.AddListener(OnButtonSound);
         }
     }
 

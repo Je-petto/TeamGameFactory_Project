@@ -346,7 +346,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
         m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
         m_MethodName: OnButtonSound
         m_Mode: 1
@@ -1115,7 +1115,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d5b7cbe60fd376d42bbdac7c7bd78f99, type: 2}
-  m_sharedMaterial: {fileID: 2296167315673218886, guid: 12867085c7d259b408a69ab5943b2085, type: 2}
+  m_sharedMaterial: {fileID: 4152084110955021115, guid: d5b7cbe60fd376d42bbdac7c7bd78f99, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1342051264
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_text: "\uB85C\uBE44\uB85C \uB3CC\uC544 \uAC00\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d5b7cbe60fd376d42bbdac7c7bd78f99, type: 2}
-  m_sharedMaterial: {fileID: 2296167315673218886, guid: 12867085c7d259b408a69ab5943b2085, type: 2}
+  m_sharedMaterial: {fileID: 4152084110955021115, guid: d5b7cbe60fd376d42bbdac7c7bd78f99, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1394921361
@@ -1852,7 +1852,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
         m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
         m_MethodName: OnButtonSound
         m_Mode: 1
@@ -2886,7 +2886,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
         m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
         m_MethodName: OnButtonSound
         m_Mode: 1
