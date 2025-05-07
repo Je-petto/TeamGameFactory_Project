@@ -235,17 +235,12 @@ Transform:
   - {fileID: 8241946461474299630}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &228228206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8384703162039603241, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
-  m_PrefabInstance: {fileID: 1308141766}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &228228207 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5859568219040250468, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
   m_PrefabInstance: {fileID: 1308141766}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228228206}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0dfe86a12acad74d9c8486c16141b9f, type: 3}
@@ -445,6 +440,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &928819315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8564887566535794617, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
+  m_PrefabInstance: {fileID: 1308141766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &961645138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1049,8 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5563704683405056678, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3865e3cce955734494f4101e3efa8bd, type: 3}
@@ -2106,7 +2107,7 @@ MonoBehaviour:
   - {fileID: 5083944178219554048, guid: a25f364431439894592f02831aac6551, type: 3}
   - {fileID: 9107166558188793879, guid: 148e04cb0f8745642a359868a3b2ed57, type: 3}
   - {fileID: 7822429838863323, guid: e4d1c1a152a21f64faa2bb8193bd8bd6, type: 3}
-  playerObj: {fileID: 228228206}
+  playerObj: {fileID: 928819315}
 --- !u!114 &232440615035035430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2935,7 +2936,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1217277852530902701}
   - component: {fileID: 7279575768307355252}
-  - component: {fileID: 8949775948291337299}
   m_Layer: 0
   m_Name: Cinemachine
   m_TagString: Untagged
@@ -3752,18 +3752,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8949775948291337299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4811475737653249063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd8c960d6f316848ae8b697a594982b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &8974103947104695672
 CanvasRenderer:
   m_ObjectHideFlags: 0

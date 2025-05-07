@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a32858900dc30e42903c29b012c9482, type: 3}
   m_Name: SpikeBall
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 17
   scrollSpeed: 37.5
   rotationSpeed: 90
   weight: 1

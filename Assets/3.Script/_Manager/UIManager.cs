@@ -73,6 +73,12 @@ public class UIManager : MonoBehaviour
         {
             GameManager.isPause = !GameManager.isPause;
             Time.timeScale = GameManager.isPause ? 0f : 1f;
+            /*
+            if (GameManager.isPause)
+                Time.timeScale = 0f;
+            else
+                Time.timeScale = 1f;
+            */
             optionUI.SetActive(GameManager.isPause);
 
             if (GameManager.isPause)
