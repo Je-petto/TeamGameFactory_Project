@@ -291,6 +291,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SceneMG, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551641982374882993, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -194
+      objectReference: {fileID: 0}
     - target: {fileID: 4889770763595865780, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
       propertyPath: m_Name
       value: MainSceneUI
