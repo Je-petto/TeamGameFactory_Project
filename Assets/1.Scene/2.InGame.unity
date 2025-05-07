@@ -2961,7 +2961,7 @@ MonoBehaviour:
   - {fileID: 7859224834240827593, guid: 93f06d8ea29806a418cc416cc9d5a437, type: 3}
   - {fileID: 3741406353282725671, guid: e3b77d4e8dac4194c93496414379b117, type: 3}
   - {fileID: 7454266047204773085, guid: 8cefb2e49de0fdd4ba2fbdfcafd8f781, type: 3}
-  SpawnCollectable: {fileID: 0}
+  SpawnCollectable: {fileID: 5748568137950019443}
   mainCamera: {fileID: 0}
   spawnZ: 200
   spawnInterval: 1
