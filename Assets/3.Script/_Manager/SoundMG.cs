@@ -93,12 +93,12 @@ public class SoundMG : MonoBehaviour
     // 버튼 클릭 효과음을 재생하는 함수입니다.
     public void OnButtonSound()
     {
-        if (ButtonClip != null)
+        //if (ButtonClip != null)
             SFXaudio.PlayOneShot(ButtonClip, 3f); // SFXaudio에서 ButtonClip을 3f 볼륨으로 재생
-        else
-        {
-            Debug.LogWarning("ButtonClip이 null입니다!"); // ButtonClip이 null인 경우 경고 메시지를 출력합니다.
-        }
+        // else
+        // {
+        //     Debug.LogWarning("ButtonClip이 null입니다!"); // ButtonClip이 null인 경우 경고 메시지를 출력합니다.
+        // }
     }
 
     //원래 모든 씬 버튼에 효과음을 내고 싶었는데 다른 씬에서 버튼을 눌러도 소리가 안남.
