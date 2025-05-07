@@ -899,6 +899,7 @@ MonoBehaviour:
   - {fileID: 4130042022391597337}
   - {fileID: 2854433554064676440}
   - {fileID: 4487705364700147972}
+  spawnedCharacters: []
 --- !u!224 &475801083058018027
 RectTransform:
   m_ObjectHideFlags: 0
