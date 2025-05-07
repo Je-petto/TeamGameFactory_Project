@@ -3,10 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SoundManager : MonoBehaviour
+public class SoundMG : MonoBehaviour
 {
-    // 싱글톤 인스턴스.
-    public static SoundManager Instance = null;
+    public static SoundMG Instance = null;
 
     // 씬 인덱스에 맞는 BGM 클립을 저장하는 리스트.
     // 인덱스 0은 씬 0번의 BGM, 인덱스 1은 씬 1번의 BGM.
@@ -65,18 +64,13 @@ public class SoundManager : MonoBehaviour
     // 씬이 로드될 때마다 호출되는 함수입니다.
     public void OnSceneLoaded(Scene scene, LoadSceneMode loadScene)
     {
-        PlaySceneBgm(); // 씬에 맞는 BGM을 재생합니다.
+        PlaySceneBgm();
 
-        // 버튼 클릭 시 효과음을 재생하도록 버튼에 리스너를 추가합니다. (ButtonClip이 null인 경우에만)
-        if (ButtonClip == null)
+        Button[] buttons = FindObjectsOfType<Button>();
+        foreach (Button btn in buttons)
         {
-            // 현재 씬에서 Button 컴포넌트를 찾습니다.
-            Button button = FindObjectOfType<Button>(); //씬에 있는 button 오브젝트 찾기
-            if (button != null && SoundManager.Instance != null)
-            {
-                // 버튼 클릭 시 OnButtonSound 함수를 호출하도록 리스너를 추가합니다.
-                button.onClick.AddListener(SoundManager.Instance.OnButtonSound); //button 클릭하면 OnButtonSound 함수 실행
-            }
+            btn.onClick.RemoveListener(OnButtonSound); // 중복 방지
+            btn.onClick.AddListener(OnButtonSound);    // 효과음 등록
         }
     }
 
