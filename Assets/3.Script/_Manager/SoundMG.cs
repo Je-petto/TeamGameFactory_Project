@@ -16,56 +16,80 @@ public class SoundMG : MonoBehaviour
     // SFX(효과음)을 재생하는 AudioSource
     public AudioSource SFXaudio;
     // 버튼 클릭 효과음 클립
-    
+
     [SerializeField] public AudioClip ButtonClip;
     // 버튼 효과음 클립의 Resources 폴더 내 경로 (Inspector에서 설정 가능)
     [SerializeField] public string buttonClipPath = "ButtonSound"; // 기본 경로 설정 (Resources 폴더 내)
 
-    // Awake() 함수는 스크립트 인스턴스가 생성될 때 호출됩니다.
     public void Awake()
     {
-        // 싱글톤 패턴 구현
         if (Instance == null)
         {
-            // 첫 번째 인스턴스인 경우
             Instance = this;
-            // 씬이 바뀌어도 파괴되지 않도록 설정합니다.
             DontDestroyOnLoad(gameObject);
 
-            // AudioSource 컴포넌트들을 찾아 할당
-            var auDio = GetComponents<AudioSource>();
-            if (auDio.Length >= 2)
+            // AudioSource가 없다면 생성
+            AudioSource[] sources = GetComponents<AudioSource>();
+            if (sources.Length < 2)
             {
-                BGMaudio = auDio[0];  // 첫 번째 AudioSource를 BGM으로
-                SFXaudio = auDio[1];  // 두 번째 AudioSource를 SFX로
+                BGMaudio = gameObject.AddComponent<AudioSource>();
+                BGMaudio.playOnAwake = false;
+
+                SFXaudio = gameObject.AddComponent<AudioSource>();
+                SFXaudio.playOnAwake = false;
+            }
+            else
+            {
+                BGMaudio = sources[0];
+                SFXaudio = sources[1];
             }
 
-            // 버튼 효과음 클립을 Resources에서 동적으로 로드합니다.
-            if (ButtonClip == null) // 이미 할당된 클립이 없는 경우
+            // AudioSource 무조건 활성화
+            BGMaudio.enabled = true;
+            SFXaudio.enabled = true;
+
+            // ButtonClip 로드
+            if (ButtonClip == null)
             {
-                ButtonClip = Resources.Load<AudioClip>(buttonClipPath); // Resources에서 로드
-                if (ButtonClip == null) // 로드 실패 시
+                ButtonClip = Resources.Load<AudioClip>(buttonClipPath);
+                if (ButtonClip == null)
                 {
-                    Debug.LogWarning("ButtonClip 로드 실패! 경로 확인 필요: " + buttonClipPath); // 경고 메시지 출력
+                    Debug.LogWarning("ButtonClip 로드 실패! 경로 확인 필요: " + buttonClipPath);
                 }
             }
-            // 씬 로드 완료 시 OnSceneLoaded 함수를 호출하도록 이벤트를 등록합니다.
+
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
-
         else
         {
-            // 이미 인스턴스가 존재하는 경우, 중복 생성을 막고 이 객체를 파괴합니다.
             Destroy(gameObject);
         }
     }
 
-
     // 씬이 로드될 때마다 호출되는 함수입니다.
     public void OnSceneLoaded(Scene scene, LoadSceneMode loadScene)
     {
-        PlaySceneBgm();
+        if (SFXaudio == null)
+        {
+            Debug.LogError("SFXaudio가 null입니다!");
+            return;
+        }
 
+        // 씬 로드 시 SFXaudio가 활성화되어 있는지 체크
+        if (!SFXaudio.gameObject.activeInHierarchy)
+        {
+            SFXaudio.gameObject.SetActive(true);
+        }
+
+        if (!SFXaudio.enabled)
+        {
+            SFXaudio.enabled = true;
+        }
+
+        // BGM이 정상적으로 작동하는지 확인하고, PlaySceneBgm() 호출
+        PlaySceneBgm(); // 새로 로드된 씬에 맞는 BGM을 항상 재생
+
+        // 버튼에 효과음 추가
         Button[] buttons = FindObjectsOfType<Button>();
         foreach (Button btn in buttons)
         {
@@ -93,13 +117,36 @@ public class SoundMG : MonoBehaviour
     // 버튼 클릭 효과음을 재생하는 함수입니다.
     public void OnButtonSound()
     {
-        //if (ButtonClip != null)
-            SFXaudio.PlayOneShot(ButtonClip, 3f); // SFXaudio에서 ButtonClip을 3f 볼륨으로 재생
-        // else
-        // {
-        //     Debug.LogWarning("ButtonClip이 null입니다!"); // ButtonClip이 null인 경우 경고 메시지를 출력합니다.
-        // }
-    }
+        if (SFXaudio == null)
+        {
+            Debug.LogError("SFXaudio가 null입니다!");
+            return;
+        }
 
+        // AudioSource가 비활성화된 경우 강제로 활성화
+        if (!SFXaudio.enabled)
+        {
+            SFXaudio.enabled = true;
+        }
+
+        // AudioSource가 속한 게임 오브젝트가 비활성화된 경우 활성화
+        if (!SFXaudio.gameObject.activeInHierarchy)
+        {
+            SFXaudio.gameObject.SetActive(true);
+        }
+
+        // PlayOneShot 전에 AudioSource가 정상적으로 활성화되었는지 다시 확인
+        if (SFXaudio.isActiveAndEnabled && !SFXaudio.isPlaying) // AudioSource가 활성화되고 재생 중이 아닌 경우에만 재생
+        {
+            if (ButtonClip != null)
+            {
+                SFXaudio.PlayOneShot(ButtonClip, 3f); // 볼륨을 3으로 설정 (조정 가능)
+            }
+            else
+            {
+                Debug.LogWarning("ButtonClip이 null입니다!");
+            }
+        }
+    }
     //원래 모든 씬 버튼에 효과음을 내고 싶었는데 다른 씬에서 버튼을 눌러도 소리가 안남.
 }

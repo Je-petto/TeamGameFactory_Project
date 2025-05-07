@@ -1375,6 +1375,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+        m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
+        m_MethodName: OnButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &2826955651784938457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1717,7 +1729,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1028130100347864314, guid: 946f2c3821ebdee4496537aeb7b8c046, type: 3}
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
         m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
         m_MethodName: OnButtonSound
         m_Mode: 1
@@ -1839,7 +1851,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
         m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
         m_MethodName: OnButtonSound
         m_Mode: 1
@@ -2171,6 +2183,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+        m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
+        m_MethodName: OnButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &6861263812727153260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2254,6 +2278,18 @@ MonoBehaviour:
       - m_Target: {fileID: 342064505}
         m_TargetAssemblyTypeName: SceneMG, Assembly-CSharp
         m_MethodName: GoToLog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+        m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
+        m_MethodName: OnButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2667,6 +2703,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1459032377}
         m_TargetAssemblyTypeName: SceneMG, Assembly-CSharp
         m_MethodName: BackToStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2457887329286663148, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
+        m_TargetAssemblyTypeName: SoundMG, Assembly-CSharp
+        m_MethodName: OnButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
