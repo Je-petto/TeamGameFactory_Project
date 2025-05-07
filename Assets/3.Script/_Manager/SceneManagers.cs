@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneMG : MonoBehaviour
+public class SceneManagers : MonoBehaviour
 {
     public void BackToStart() // 메인화면 씬.
     {

@@ -594,7 +594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2844515980490762275, guid: 946f2c3821ebdee4496537aeb7b8c046, type: 3}
       propertyPath: m_Name
-      value: SoundMG
+      value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 4462920062017673690, guid: 946f2c3821ebdee4496537aeb7b8c046, type: 3}
       propertyPath: m_audioClip

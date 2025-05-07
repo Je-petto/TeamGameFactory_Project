@@ -2265,6 +2265,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 811c3208748e9d94aa65018a05d2a62b, type: 3}
   abilityUI: {fileID: 1256054142956753752}
   scoreUI: {fileID: 4223176443066899457}
+  gameOverUI: {fileID: 1193608719}
   bloodScreen: {fileID: 241517751212534469}
   curve_animation:
     serializedVersion: 2

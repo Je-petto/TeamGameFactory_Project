@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SoundMG : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     // 싱글톤 인스턴스.
-    public static SoundMG Instance = null;
+    public static SoundManager Instance = null;
 
 
     // 씬 인덱스에 맞는 BGM 클립을 저장하는 리스트.
@@ -72,10 +72,10 @@ public class SoundMG : MonoBehaviour
         {
             // 현재 씬에서 Button 컴포넌트를 찾습니다.
             Button button = FindObjectOfType<Button>(); //씬에 있는 button 오브젝트 찾기
-            if (button != null && SoundMG.Instance != null)
+            if (button != null && SoundManager.Instance != null)
             {
                 // 버튼 클릭 시 OnButtonSound 함수를 호출하도록 리스너를 추가합니다.
-                button.onClick.AddListener(SoundMG.Instance.OnButtonSound); //button 클릭하면 OnButtonSound 함수 실행
+                button.onClick.AddListener(SoundManager.Instance.OnButtonSound); //button 클릭하면 OnButtonSound 함수 실행
             }
         }
     }
