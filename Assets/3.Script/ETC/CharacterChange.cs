@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CustomInspector;
 using UnityEngine;
 
 public class CharacterChange : MonoBehaviour
@@ -6,7 +7,7 @@ public class CharacterChange : MonoBehaviour
     [Header("스폰 할 캐릭터")]
     public List<GameObject> Characters = new List<GameObject>(); // 스폰할 캐릭터 프리팹 리스트
     public Transform[] SpwanPoint; // 캐릭터 스폰 지점 배열
-    private List<GameObject> spawnedCharacters = new List<GameObject>(); // 실제 스폰된 캐릭터 오브젝트 리스트
+    [ReadOnly] public List<GameObject> spawnedCharacters = new List<GameObject>(); // 실제 스폰된 캐릭터 오브젝트 리스트
 
     private void Start()
     {
@@ -66,9 +67,19 @@ public class CharacterChange : MonoBehaviour
         // 리스트 순환 알고리즘: 첫 번째 요소를 끝으로 이동
         GameObject firstCharacter = spawnedCharacters[0];
         spawnedCharacters.RemoveAt(0);
-        spawnedCharacters.Add(firstCharacter);
+        spawnedCharacters.Add(firstCharacter);//자동으로 Element2를 생성하여 앞으로 밀어버림
 
         // 선택 플레이어 인덱스 순환 처리
+        // 0 = (0 == 2) ? 0(X) : 0 + 1(O); 
+        // -> GameManager.selectPlayer = 1
+        // 2 = (2 == 2) ? 0(O) : 2 + 1(X); 
+        // -> GameManager.selectPlayer = 0
+
+        // if (GameManager.selectPlayer == 2)
+        //     GameManager.selectPlayer = 0;
+        // else
+        //     GameManager.selectPlayer++;
+
         GameManager.selectPlayer = (GameManager.selectPlayer == 2) ? 0 : GameManager.selectPlayer + 1;
 
         UpdateCharacterTransforms(); // 변경된 순서에 따라 위치 갱신
@@ -81,7 +92,9 @@ public class CharacterChange : MonoBehaviour
 
         // 리스트 순환 알고리즘: 마지막 요소를 처음으로 이동
         GameObject lastCharacter = spawnedCharacters[spawnedCharacters.Count - 1];
+        // 스폰된 프리펨 리스트에서 제일 마지막 프리펩 요소를 제거
         spawnedCharacters.RemoveAt(spawnedCharacters.Count - 1);
+        // 제거된 프리펩을 직접 0번째 Index에 넣음
         spawnedCharacters.Insert(0, lastCharacter);
 
         // 선택 플레이어 인덱스 역순환 처리

@@ -1,7 +1,6 @@
 // Ability.cs 파일 (새로 생성하거나 주석 해제 후 수정)
 using UnityEngine;
 using System.Collections; // 코루틴을 사용하려면 이것도 필요
-using CustomInspector;
 
 public abstract class Ability : ScriptableObject // ScriptableObject를 상속받아 에셋으로 관리 가능하게 함
 {

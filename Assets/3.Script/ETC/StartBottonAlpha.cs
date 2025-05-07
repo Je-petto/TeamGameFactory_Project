@@ -18,7 +18,7 @@ public class StartBottonAlpha : MonoBehaviour
     // TextAlpha() 코루틴은 텍스트의 알파 값을 주기적으로 변경하여 깜빡이는 효과를 생성합니다.
     IEnumerator TextAlpha()
     {
-        //무한 루프를 사용해서 깜빡임 효과를 유지 했습니다.
+        // 무한 루프를 사용해서 깜빡임 효과를 유지 했습니다.
         while(true)
         {
             // 텍스트의 알파 값을 0으로 설정해 투명화.

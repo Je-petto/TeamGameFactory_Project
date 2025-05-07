@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // 아이템을 먹고 나서 화면의 모든 장애물을 삭제
