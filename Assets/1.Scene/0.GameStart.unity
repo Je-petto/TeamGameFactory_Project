@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 4304483069784391639, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 541145441}
+      objectReference: {fileID: 0}
     - target: {fileID: 4304483069784391639, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LobbyScene
@@ -397,17 +397,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57bf3d0304f98c946ae346e6fefa4962, type: 3}
---- !u!114 &541145441 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-  m_PrefabInstance: {fileID: 1071913095}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928c1b914c9986844b84c69faf10a71b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &665018731
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,38 +540,6 @@ PrefabInstance:
     - target: {fileID: 4475543614236500557, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: scenesClip.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: scenesClip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5afb6da52f4c9fd45a6a39778f19fad4, type: 3}
-    - target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: scenesClip.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b1a14b17a324b449922028f697c9d27, type: 3}
-    - target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: scenesClip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9f97e76469fd1ed4fb7a6428a00676db, type: 3}
-    - target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: scenesClip.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 92cfa2d767338444d8053b5579ec62f0, type: 3}
-    - target: {fileID: 4961041055082619253, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: scenesClip.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 92cfa2d767338444d8053b5579ec62f0, type: 3}
-    - target: {fileID: 5526279999640321530, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: m_Pitch
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5526279999640321530, guid: bc01e56138ae90847a69feca5445da8a, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4475543614236500557}
-  - component: {fileID: 4961041055082619253}
+  - component: {fileID: 2457887329286663148}
   - component: {fileID: 4462920062017673690}
   - component: {fileID: 5526279999640321530}
   m_Layer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4961041055082619253
+--- !u!114 &2457887329286663148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928c1b914c9986844b84c69faf10a71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenesClip: []
+  scenesClip:
+  - {fileID: 8300000, guid: 5afb6da52f4c9fd45a6a39778f19fad4, type: 3}
+  - {fileID: 8300000, guid: 7b1a14b17a324b449922028f697c9d27, type: 3}
+  - {fileID: 8300000, guid: 9f97e76469fd1ed4fb7a6428a00676db, type: 3}
+  - {fileID: 8300000, guid: 92cfa2d767338444d8053b5579ec62f0, type: 3}
+  - {fileID: 8300000, guid: 92cfa2d767338444d8053b5579ec62f0, type: 3}
   BGMaudio: {fileID: 4462920062017673690}
   SFXaudio: {fileID: 5526279999640321530}
   ButtonClip: {fileID: 8300000, guid: 69f529070c39795429f7465ef3480e6f, type: 3}
@@ -159,8 +164,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4220641853957804595, guid: 1419261a204030a4e8964f4eef1e9e63, type: 2}
   m_audioClip: {fileID: 8300000, guid: 69f529070c39795429f7465ef3480e6f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.1
+  m_Pitch: 2
   Loop: 0
   Mute: 0
   Spatialize: 0
