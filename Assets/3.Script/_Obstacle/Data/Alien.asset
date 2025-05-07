@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Alien
   m_EditorClassIdentifier: 
   damage: 25
-  scrollSpeed: 40
+  scrollSpeed: 50
   rotationSpeed: 0
   weight: 1

@@ -17,5 +17,5 @@ public class CollectableHealth : Collectable
         transform.Rotate(randomRotationAxis, data.rotationSpeed * Time.deltaTime);
         //data.rotationSpeed에 맞춰 아이템이 회전하도록 설정
         //Time.deltaTime 곱해서 일정한 회전속도 유지
-    }  
+    }
 }

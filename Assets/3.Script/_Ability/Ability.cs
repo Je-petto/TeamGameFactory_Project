@@ -8,11 +8,8 @@ public abstract class Ability : ScriptableObject // ScriptableObject를 상속�
     public float duration = 3f; // 기본 지속 시간
     public float coolDown = 3f; // 기본 쿨타임
 
+    // PlayerBeHaviour에서 능력을 사용할 때, 반드시 실행되는 메서드
+    // 따라서, 모든 Ability는 해당 메서드를 가지고 있어야 된다.
+    // 이 메서드는 Ability의 주 작동을 담당함.
     public abstract IEnumerator ActivateAbility(GameObject user); // 어떤 오브젝트가 어빌리티를 쓰는지 인자로 넘겨줄 수 있음
-}
-
-public enum Abilities
-{
-    Scale = 0,
-    Invincible
 }

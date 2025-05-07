@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Asteroid
   m_EditorClassIdentifier: 
   damage: 10
-  scrollSpeed: 25
+  scrollSpeed: 32.5
   rotationSpeed: 120
   weight: 2

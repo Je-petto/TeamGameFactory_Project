@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleScrollPhase : MonoBehaviour
 {
     [Header("난이도 상승 설정")]
     public float intervalTime = 10f; // 지정된 시간(초)마다 난이도 상승 기본값 10초
-    public float scrollSpeed = 0.1f; // 스크롤 속도 증가량
+    public float increseSpeed = 0.1f; // 스크롤 속도 증가량
     public float spawnRate = 0.5f; // 스폰 빈도 증가량
 
     private float timer; //경과 시간 추적
@@ -31,7 +29,7 @@ public class ObstacleScrollPhase : MonoBehaviour
     {
         if (scrollManager != null) //스크롤의 속도 증가
         {
-            scrollManager.ScrollIncreseSpeed += scrollSpeed;
+            scrollManager.ScrollIncreseSpeed += increseSpeed;
         }
 
         if (obstacleSpawner != null) //생성되는 obstcale 증가

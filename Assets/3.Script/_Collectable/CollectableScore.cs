@@ -3,7 +3,7 @@ using UnityEngine;
 //점수 증가 아이템 클래스
 public class CollectableScore : Collectable
 {
-    public int gainScore = 10;  //기본 점수 추가
+    public int gainScore = 100;  //기본 점수 추가
 
     private Vector3 randomRotationAxis; //아이템 회전축
     public override void Awake()

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SpikeBall
   m_EditorClassIdentifier: 
   damage: 20
-  scrollSpeed: 30
+  scrollSpeed: 37.5
   rotationSpeed: 90
   weight: 1

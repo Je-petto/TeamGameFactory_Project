@@ -216,7 +216,7 @@ public class PlayerBehaviour : MonoBehaviour
     // 장애물 혹은 아이템과 충돌했을 때만 실행되는 메서드
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Collectable" )
+        if (col.gameObject.tag == "Collectable")
         {
             // 일단 어떤 아이템을 먹었는 지는 모르겠고, 일단 스크립트만 가져옴.
             Collectable item = col.GetComponent<Collectable>();
@@ -239,6 +239,8 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
         }
+        // Invincible 능력이 켜져있을 때는 false되서 Obstacle과 충돌하지 않음.
+        
         else if (col.gameObject.tag == "Obstacle" && !GameManager.isInvincible)
         {
             Obstacle obs = col.GetComponent<Obstacle>();
