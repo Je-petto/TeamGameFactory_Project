@@ -16,18 +16,6 @@ public class GameOverManager : MonoBehaviour
     {
         gameOverUI.SetActive(false);
     }
-
-<<<<<<< Updated upstream
-    // 게임 오버가 되었을 때 실행되는 함수예요
-   public void ShowGameOverUI()
-{
-    gameOverUI.SetActive(true); // 게임 오버 UI 활성화
-    SoundMG.Instance.ButtonSoundsCall(gameOverUI); // ✅ 버튼 사운드 연결 추가
-    GameManager.selectPlayer = 0;
-    playerNameInput.text = "";
-    Time.timeScale = 0f;
-}
-=======
     // 게임 오버가 되었을 때 실행되는 함수
     public void ShowGameOverUI()
     {
@@ -36,7 +24,6 @@ public class GameOverManager : MonoBehaviour
         playerNameInput.text = ""; // 이름 입력칸 초기화 
         Time.timeScale = 0f; // 게임 정지
     }
->>>>>>> Stashed changes
 
     // 플레이어가 이름을 입력하고 확인 버튼을 눌렀을 때 실행
     public void OnSubmitName()
