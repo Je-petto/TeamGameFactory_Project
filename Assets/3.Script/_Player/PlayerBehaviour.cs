@@ -2,7 +2,6 @@ using CustomInspector;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 
 // Rigidbody 컴포넌트가 필요함을 명시적으로 표시
 [RequireComponent(typeof(Rigidbody))]

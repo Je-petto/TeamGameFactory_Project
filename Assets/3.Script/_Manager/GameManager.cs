@@ -34,5 +34,7 @@ public class GameManager : MonoBehaviour
         distance = 0;
         isLive = true;
         isPause = false;
+        isInvincible = false;
+        collectableIncresePersent = 1f;
     }
 }
