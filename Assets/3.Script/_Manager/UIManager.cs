@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using CustomInspector;
-using TMPro;
 
 public class UIManager : MonoBehaviour
 {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class Collectable : ScrollableObject //추상 클래스 abstract 
+public abstract class Collectable : ScrollableObject // 추상 클래스 abstract 
 {
-    public CollectableData data; //Collectable(item)의 속성 담음
+    public CollectableData data; // Collectable(item)의 속성 담음
     public virtual void Update() 
     {
         transform.Rotate(randomRotationAxis, data.rotationSpeed * Time.deltaTime);

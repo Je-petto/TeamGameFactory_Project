@@ -39,8 +39,6 @@ public class PlayerBehaviour : MonoBehaviour
     // 또한 중력을 적용하기 위해서 넣음.
     private Rigidbody rb;
 
-    private Coroutine activeAbilityCoroutine = null;
-
     // 능력 사용할 수 있는 지 판단하기 위한 Bool 데이터
     [ReadOnly] public bool canUse;
     [SerializeField] private UIManager ui;
@@ -166,7 +164,7 @@ public class PlayerBehaviour : MonoBehaviour
                         // 어빌리티 에셋의 ActivateAbility 코루틴 시작
                         // PlayerBehaviour 인스턴스 (this)를 넘겨주어 코루틴을 시작하게 합니다.
                         // ActivateAbility 코루틴 자체에는 user GameObject만 넘겨주도록 했습니다.
-                        activeAbilityCoroutine = StartCoroutine(currentAbilityAsset.ActivateAbility(gameObject)); // PlayerBehaviour가 아닌 gameObject를 넘겨줌
+                        StartCoroutine(currentAbilityAsset.ActivateAbility(gameObject)); // PlayerBehaviour가 아닌 gameObject를 넘겨줌
                     }
                     else
                         // 쿨타임 중이라면 남은 시간 표시 (소수점 둘째 자리까지)
@@ -220,17 +218,17 @@ public class PlayerBehaviour : MonoBehaviour
             // 일단 어떤 아이템을 먹었는 지는 모르겠고, 일단 스크립트만 가져옴.
             Collectable item = col.GetComponent<Collectable>();
 
-            // 어떤 아이템을 먹었는지 확인하기 위해 Type받아서 직접 확인함.
-            if (item.data.type == CollectableType.HEALTH) // 체력 +
+            // 어떤 아이템을 먹었는지 확인하기 위해 Type받아서 직접 확인함.     
+            if (item.data.collectableType == CollectableType.HEALTH) // 체력 +
                 OnHealing((int)(((CollectableHealth)item).gainHealth * GameManager.collectableIncresePersent));
 
-            else if (item.data.type == CollectableType.SCORE) // 점수 +
+            else if (item.data.collectableType == CollectableType.SCORE) // 점수 +
                 GameManager.GainScore((int)(((CollectableScore)item).gainScore * GameManager.collectableIncresePersent));
 
-            else if (item.data.type == CollectableType.DOBS) // 나와있는 장애물 전체 삭제
+            else if (item.data.collectableType == CollectableType.DOBS) // 나와있는 장애물 전체 삭제
                 item.ClearObstacles();
                 
-            else if (item.data.type == CollectableType.REVERS) // 아이템 획득시 리버스
+            else if (item.data.collectableType == CollectableType.REVERS) // 아이템 획득시 리버스
             {
                 CollectableRevers reversItem = item as CollectableRevers;
                 if (reversItem != null)
