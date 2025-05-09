@@ -4,7 +4,7 @@ using UnityEngine;
 public enum CollectableType {SCORE, HEALTH, DOBS, REVERS}
 
 [CreateAssetMenu(menuName = "ScriptableObject/Scrollable/Collectable", fileName = "Collectable")]
-public class CollectableData : ScrollableObejctData
+public class CollectableData : ScrollableObjectData
 {
     [Header("Collectable Setup")]
     public CollectableType collectableType;

@@ -81,10 +81,8 @@ public class UIManager : MonoBehaviour
             optionUI.SetActive(GameManager.isPause);
 
             if (GameManager.isPause)
-            {
                 // UI가 켜질 때 버튼 효과음 리스너 등록
                 SoundMG.Instance.ButtonSoundsCall(optionUI);
-            }
         }
     }
     private void SetScore()

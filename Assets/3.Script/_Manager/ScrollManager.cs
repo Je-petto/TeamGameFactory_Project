@@ -100,7 +100,7 @@ public class ScrollManager : MonoBehaviour
             lastPhase = currentPhase;
             scrollIncreseSpeed = ScrollIncreseSpeed;
         }
-        // 총 점수 계산(거리+아이템 획득 점수)
+        // 총 점수 계산(거리 + 아이템 획득 점수)
         GameManager.totalScore = GameManager.distance + GameManager.itemScore;
         // 삭제 위치를 넘었을 경우 삭제
         for (int i = CollectableSpawnParent.childCount - 1; i >= 0; i--)

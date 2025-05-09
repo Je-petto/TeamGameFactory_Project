@@ -120,13 +120,13 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !GameManager.isPause)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            // 위로 만 이동할 수 있게 Vector3.up(0f, 1f, 0f)로 힘을 가함.
+            // 위로만 이동할 수 있게 Vector3.up(0f, 1f, 0f)로 힘을 가함.
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         if (Input.GetMouseButtonDown(1))
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            // 위로 만 이동할 수 있게 Vector3.down(0f, -1f, 0f)로 힘을 가함.
+            // 아래로만 이동할 수 있게 Vector3.down(0f, -1f, 0f)로 힘을 가함.
             rb.AddForce(Vector3.down * jumpForce, ForceMode.Impulse);
         }
 
@@ -183,25 +183,19 @@ public class PlayerBehaviour : MonoBehaviour
         canUse = Time.time >= currentAbilityLastUseTime + currentAbilityAsset.coolDown;
     }
 
-    // 장애물과 충돌할 때 피해를 받는 메서드
-    public void OnDamage(int damage)
+    // Health를 조정하는 메서드
+    private void SetHealth(int changeValue, bool isDamage)
     {
-        if (health - damage < 0) health = 0;
-        else health -= damage;
-        ui.DamageUI();
-    }
-    
-    // 체력 아이템 먹었을 때 회복하는 메서드
-    public void OnHealing(int heal)
-    {
-        if (health + heal > maxHealth) health = maxHealth;
-        else health += heal;
-
+        if (health + changeValue < 0) health = 0;
+        else if(health + changeValue > maxHealth) health = maxHealth;
+        else health += changeValue;
+        if (isDamage)
+            ui.DamageUI();
     }
 
     private void Death()
     {
-        if (health == 0 || transform.position.y < -yAxisLimit * 1.2f)
+        if (health == 0 || transform.position.y < -yAxisLimit * 1.25f)
         {
             GameManager.isLive = false;
             Time.timeScale = 0f;
@@ -220,7 +214,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             // 어떤 아이템을 먹었는지 확인하기 위해 Type받아서 직접 확인함.     
             if (item.data.collectableType == CollectableType.HEALTH) // 체력 +
-                OnHealing((int)(((CollectableHealth)item).gainHealth * GameManager.collectableIncresePersent));
+                SetHealth((int)(((CollectableHealth)item).gainHealth * GameManager.collectableIncresePersent), false);
 
             else if (item.data.collectableType == CollectableType.SCORE) // 점수 +
                 GameManager.GainScore((int)(((CollectableScore)item).gainScore * GameManager.collectableIncresePersent));
@@ -241,7 +235,7 @@ public class PlayerBehaviour : MonoBehaviour
         else if (col.gameObject.tag == "Obstacle" && !GameManager.isInvincible)
         {
             Obstacle obs = col.GetComponent<Obstacle>();
-            OnDamage(obs.data.damage);
+            SetHealth(-obs.data.damage, true);
         }
 
 

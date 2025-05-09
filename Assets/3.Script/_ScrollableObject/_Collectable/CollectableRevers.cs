@@ -1,6 +1,3 @@
-using UnityEngine;
-
-//이동반전 아이템
 public class CollectableRevers : Collectable
 {
     public float reverseDuration = 3f; // 리버스 시간 3초 유지

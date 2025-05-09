@@ -28,13 +28,9 @@ public class ObstacleScrollPhase : MonoBehaviour
     private void DifficultyLevel() //시간 지남에 따라서 난이도 증가 
     {
         if (scrollManager != null) //스크롤의 속도 증가
-        {
             scrollManager.ScrollIncreseSpeed += increseSpeed;
-        }
 
         if (obstacleSpawner != null) //생성되는 obstcale 증가
-        {
             obstacleSpawner.spawnRate += spawnRate;
-        }
     }
 }

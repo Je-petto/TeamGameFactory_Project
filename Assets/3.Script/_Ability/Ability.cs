@@ -4,7 +4,7 @@ using System.Collections; // 코루틴을 사용하려면 이것도 필요
 
 public abstract class Ability : ScriptableObject // ScriptableObject를 상속받아 에셋으로 관리 가능하게 함
 {
-    [Header("Ability의 기본 정보")]
+    [Header("Ability's Based Setup")]
     public float duration = 3f; // 기본 지속 시간
     public float coolDown = 3f; // 기본 쿨타임
 
