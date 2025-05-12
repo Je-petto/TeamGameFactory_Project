@@ -29,9 +29,9 @@ public class UIManager : MonoBehaviour
     [ReadOnly] public int health;
     void Start()
     {
-        maxHealth = player.data[GameManager.selectPlayer].maxHealth;
+        maxHealth = player.data[GameManager.Instance.selectPlayer].maxHealth;
         health = maxHealth;
-        abilityUI.sprite = abilitiesSprites[GameManager.selectPlayer];
+        abilityUI.sprite = abilitiesSprites[GameManager.Instance.selectPlayer];
     }
 
     void Update()
@@ -70,24 +70,24 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KEYSTOP) && !gameOverUI.activeSelf)
         {
-            GameManager.isPause = !GameManager.isPause;
-            Time.timeScale = GameManager.isPause ? 0f : 1f;
+            GameManager.Instance.isPause = !GameManager.Instance.isPause;
+            Time.timeScale = GameManager.Instance.isPause ? 0f : 1f;
             /*
             if (GameManager.isPause)
                 Time.timeScale = 0f;
             else
                 Time.timeScale = 1f;
             */
-            optionUI.SetActive(GameManager.isPause);
+            optionUI.SetActive(GameManager.Instance.isPause);
 
-            if (GameManager.isPause)
+            if (GameManager.Instance.isPause)
                 // UI가 켜질 때 버튼 효과음 리스너 등록
                 SoundMG.Instance.ButtonSoundsCall(optionUI);
         }
     }
     private void SetScore()
     {
-        scoreUI.text = $"Score : {(int)GameManager.totalScore}";
+        scoreUI.text = $"Score : {(int)GameManager.Instance.totalScore}";
     }
 
     public void Update_AbilityUI()

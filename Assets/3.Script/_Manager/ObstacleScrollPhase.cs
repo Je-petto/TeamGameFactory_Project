@@ -15,7 +15,7 @@ public class ObstacleScrollPhase : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.isLive) return; //살아있지 않다면(게임중이지 않다면) return
+        if (!GameManager.Instance.isLive) return; //살아있지 않다면(게임중이지 않다면) return
 
         timer += Time.deltaTime; // 매 시간마다 timer 증가 (경과시간 증가)
         if (timer >= intervalTime)  //타이머가 intervalTime보다 크거나 같아야됨

@@ -8,8 +8,8 @@ public class Ability_Invincible : Ability
 
     public override IEnumerator ActivateAbility(GameObject user) // user 인자를 받아서 사용
     {
-        GameManager.isInvincible = true;
+        GameManager.Instance.isInvincible = true;
         yield return new WaitForSeconds(duration);
-        GameManager.isInvincible = false;
+        GameManager.Instance.isInvincible = false;
     }
 }

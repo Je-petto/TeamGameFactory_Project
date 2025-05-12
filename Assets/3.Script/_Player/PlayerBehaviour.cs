@@ -65,9 +65,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.isLive)
+        if (GameManager.Instance.isLive)
         {
-            Vector3 oldPosition = transform.position;
             // 마우스 이동 및 경계 체크 메소드 호출
             MoveMouseWithinLimits();
             // 능력을 사용할 수 있는 지 판단 메서드 / 능력을 사용하는 메서드
@@ -81,13 +80,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     void SetupData()
     {
-        if (data != null && GameManager.selectPlayer >= 0 && GameManager.selectPlayer < data.Count)
+        if (data != null && GameManager.Instance.selectPlayer >= 0 && GameManager.Instance.selectPlayer < data.Count)
         {
             // 현재 플레이어의 어빌리티 에셋 참조 가져오기
-            currentAbilityAsset = data[GameManager.selectPlayer].ability;
-            maxHealth = data[GameManager.selectPlayer].maxHealth;
-            xMoveSpeed = data[GameManager.selectPlayer].xMoveSpeed;
-            jumpForce = data[GameManager.selectPlayer].jumpForce;
+            currentAbilityAsset = data[GameManager.Instance.selectPlayer].ability;
+            maxHealth = data[GameManager.Instance.selectPlayer].maxHealth;
+            xMoveSpeed = data[GameManager.Instance.selectPlayer].xMoveSpeed;
+            jumpForce = data[GameManager.Instance.selectPlayer].jumpForce;
 
             health = maxHealth;
         }
@@ -95,7 +94,7 @@ public class PlayerBehaviour : MonoBehaviour
     void MoveMouseWithinLimits()
     {
         // 게임이 일시정지됐을 때, 이동하지 않기 위한 방어 코드
-        if (GameManager.isPause) return;
+        if (GameManager.Instance.isPause) return;
 
         // 마우스의 X와 Y값을 Input으로 받아서 Vector3로 저장함.
         Vector3 moveDelta = new Vector3(Input.GetAxis("Mouse X") * xMoveSpeed, 0f, Input.GetAxis("Mouse Y") * xMoveSpeed);
@@ -117,7 +116,7 @@ public class PlayerBehaviour : MonoBehaviour
     void HandleJumpInput()
     {
         // 마우스 왼쪽 버튼 클릭 감지
-        if (Input.GetMouseButtonDown(0) && !GameManager.isPause)
+        if (Input.GetMouseButtonDown(0) && !GameManager.Instance.isPause)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             // 위로만 이동할 수 있게 Vector3.up(0f, 1f, 0f)로 힘을 가함.
@@ -132,14 +131,14 @@ public class PlayerBehaviour : MonoBehaviour
 
         // 만약 경계에서 벗어나면?
         if (transform.position.y > yAxisLimit)
-        // 좌표 깎아냄.
+            // 좌표 깎아냄.
             transform.position = new Vector3(transform.position.x, yAxisLimit, transform.position.z);
     }
 
     void UseAbility()
     {
         // 캐릭터가 살아있는지? 일시정지 안 되어있는지?
-        if (GameManager.isLive && !GameManager.isPause)
+        if (GameManager.Instance.isLive && !GameManager.Instance.isPause)
         {
             // 어빌리티 사용 키 입력 감지
             if (Input.GetKeyDown(KEYCODEABILITY))
@@ -152,7 +151,7 @@ public class PlayerBehaviour : MonoBehaviour
                     // canUse = Time.time >= currentAbilityLastUseTime + currentAbilityAsset.coolDown;
 
                     // 디버그 로그로 쿨타임 상태 확인
-                    Debug.Log($"어빌리티 사용 시도: 현재 시간 {Time.time:F2}, 마지막 사용 시간 {currentAbilityLastUseTime:F2}, 쿨다운 {currentAbilityAsset.coolDown:F2}. 사용 가능? {canUse}");
+                    Debug.Log($"어빌리티 사용 시도: 현재 시간 {Time.time:F2}, 마지막 사용 시간 {currentAbilityLastUseTime:F2}, 쿨다운 {currentAbilityAsset.coolDown:F2}. 사용 가능? \nCoolDown : {canUse}");
 
                     // 어빌리티 사용이 가능하다면 true
                     if (canUse)
@@ -197,7 +196,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (health == 0 || transform.position.y < -yAxisLimit * 1.25f)
         {
-            GameManager.isLive = false;
+            GameManager.Instance.isLive = false;
             Time.timeScale = 0f;
 
             gameOverManager.ShowGameOverUI(); // GameOver UI 띄우기
@@ -214,17 +213,23 @@ public class PlayerBehaviour : MonoBehaviour
 
             // 어떤 아이템을 먹었는지 확인하기 위해 Type받아서 직접 확인함.     
             if (item.data.collectableType == CollectableType.HEALTH) // 체력 +
-                SetHealth((int)(((CollectableHealth)item).gainHealth * GameManager.collectableIncresePersent), false);
-
+            {
+                CollectableHealth healthItem = item as CollectableHealth;
+                SetHealth((int)(healthItem.gainHealth * GameManager.Instance.collectableIncresePersent), false);
+                GameManager.Instance.GainScore((int)(healthItem.gainScore * GameManager.Instance.collectableIncresePersent));
+            }
             else if (item.data.collectableType == CollectableType.SCORE) // 점수 +
-                GameManager.GainScore((int)(((CollectableScore)item).gainScore * GameManager.collectableIncresePersent));
+                GameManager.Instance.GainScore((int)(((CollectableScore)item).gainScore * GameManager.Instance.collectableIncresePersent));
 
             else if (item.data.collectableType == CollectableType.DOBS) // 나와있는 장애물 전체 삭제
+            {
+                GameManager.Instance.GainScore((int)(((CollectableDobs)item).gainScore * GameManager.Instance.collectableIncresePersent));
                 item.ClearObstacles();
-                
+            }  
             else if (item.data.collectableType == CollectableType.REVERS) // 아이템 획득시 리버스
             {
                 CollectableRevers reversItem = item as CollectableRevers;
+                GameManager.Instance.GainScore((int)(reversItem.gainScore * GameManager.Instance.collectableIncresePersent));
                 if (reversItem != null)
                     reversItem.Reverse(this);
             }
@@ -232,7 +237,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         // Invincible 능력이 켜져있을 때는 false되서 Obstacle과 충돌하지 않음.
         
-        else if (col.gameObject.tag == "Obstacle" && !GameManager.isInvincible)
+        else if (col.gameObject.tag == "Obstacle" && !GameManager.Instance.isInvincible)
         {
             Obstacle obs = col.GetComponent<Obstacle>();
             SetHealth(-obs.data.damage, true);

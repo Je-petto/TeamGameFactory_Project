@@ -80,7 +80,7 @@ public class CharacterChange : MonoBehaviour
         // else
         //     GameManager.selectPlayer++;
 
-        GameManager.selectPlayer = (GameManager.selectPlayer == 2) ? 0 : GameManager.selectPlayer + 1;
+        GameManager.Instance.selectPlayer = (GameManager.Instance.selectPlayer == 2) ? 0 : GameManager.Instance.selectPlayer + 1;
 
         UpdateCharacterTransforms(); // 변경된 순서에 따라 위치 갱신
     }
@@ -98,7 +98,7 @@ public class CharacterChange : MonoBehaviour
         spawnedCharacters.Insert(0, lastCharacter);
 
         // 선택 플레이어 인덱스 역순환 처리
-        GameManager.selectPlayer = (GameManager.selectPlayer == 0) ? 2 : GameManager.selectPlayer - 1;
+        GameManager.Instance.selectPlayer = (GameManager.Instance.selectPlayer == 0) ? 2 : GameManager.Instance.selectPlayer - 1;
 
         UpdateCharacterTransforms(); // 변경된 순서에 따라 위치 갱신
     }

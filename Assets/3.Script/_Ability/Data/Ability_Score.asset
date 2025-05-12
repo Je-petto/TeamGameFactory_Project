@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 6
   coolDown: 12
-  scoreBoost: 3
+  scoreBoost: 2

@@ -15,5 +15,5 @@ MonoBehaviour:
   player: 0
   maxHealth: 100
   xMoveSpeed: 0.3
-  jumpForce: 5.25
+  jumpForce: 5.75
   ability: {fileID: 11400000, guid: bcdd2a0bd4288614898bb6e022d66f7e, type: 2}

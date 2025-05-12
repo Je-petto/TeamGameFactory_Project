@@ -20,7 +20,7 @@ public class GameOverManager : MonoBehaviour
     public void ShowGameOverUI()
     {
         gameOverUI.SetActive(true); // 게임 오버 UI 활성화
-        GameManager.selectPlayer = 0; // selectplayer 값을 0으로 전환하여 캐릭터 선택값 초기화
+        GameManager.Instance.selectPlayer = 0; // selectplayer 값을 0으로 전환하여 캐릭터 선택값 초기화
         playerNameInput.text = ""; // 이름 입력칸 초기화 
         Time.timeScale = 0f; // 게임 정지
     }
@@ -31,12 +31,12 @@ public class GameOverManager : MonoBehaviour
         Debug.Log("입력한 이름: " + playerNameInput.text); // 디버깅 용도로 이름 출력
 
         // GameManager에 있는 이름과 점수를 가져와 저장
-        GameManager.playerName = playerNameInput.text;
-        GameManager.totalScore = GameManager.itemScore + GameManager.distance;
+        GameManager.Instance.playerName = playerNameInput.text;
+        GameManager.Instance.totalScore = GameManager.Instance.itemScore + GameManager.Instance.distance;
         // GameManager.totalScore: 게임 전체에서 사용하는 점수. 다른 클래스에서도 이 값을 참고할 수 있다
 
         // 랭킹 정보를 저장하는 함수 호출
-        SavePlayerRecord(GameManager.playerName, (int)GameManager.totalScore);
+        SavePlayerRecord(GameManager.Instance.playerName, (int)GameManager.Instance.totalScore);
 
         // 결과 화면으로 전환
         SceneManager.LoadScene("3.GameResult");

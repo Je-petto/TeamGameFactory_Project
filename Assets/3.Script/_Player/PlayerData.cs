@@ -16,5 +16,7 @@ public class PlayerData : ScriptableObject
     [Header("Move Setup")]
     public float xMoveSpeed;
     public float jumpForce;
+
+    [Header("Ability Setup")]
     public Ability ability;
 }

@@ -16,10 +16,10 @@ public class PlayerInfoPanel : MonoBehaviour
     void Start()
     {
         // GameManager에서 점수 및 이름 받아오기
-        string playerID = GameManager.playerName;
-        int distanceScore = Mathf.RoundToInt(GameManager.distance);
-        int itemScore = Mathf.RoundToInt(GameManager.itemScore);
-        int totalScore = Mathf.RoundToInt(GameManager.totalScore);
+        string playerID = GameManager.Instance.playerName;
+        int distanceScore = Mathf.RoundToInt(GameManager.Instance.distance);
+        int itemScore = Mathf.RoundToInt(GameManager.Instance.itemScore);
+        int totalScore = Mathf.RoundToInt(GameManager.Instance.totalScore);
 
         // UI에 포맷팅된 텍스트 표시
         nameText.text = $"Player ID : {playerID}";

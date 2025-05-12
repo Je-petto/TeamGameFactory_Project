@@ -1,4 +1,3 @@
-// Ability_ScaleData.cs 파일 -> Ability_Scale.cs 파일로 이름 변경하는 것을 추천
 using UnityEngine;
 using System.Collections;
 
@@ -7,18 +6,24 @@ using System.Collections;
 public class Ability_Scale : Ability
 {
     [Header("Ability's Detailed Setup")]
-    public float ChangeScale = 0.25f; // Scale 어빌리티에 특화된 데이터
+    public float changeScale = 0.25f; // Scale 어빌리티에 특화된 데이터
+    public float increseXSpeed = 1.25f;
 
     public override IEnumerator ActivateAbility(GameObject user) // user 인자를 받아서 사용
     {
-        // user 오브젝트의 스케일을 변경합니다.
-        Vector3 originalScale = user.transform.localScale; // 원래 스케일 저장
-        user.transform.localScale *= ChangeScale;
+        PlayerBehaviour player = user.GetComponent<PlayerBehaviour>();
+        float originalSpeed = player.data[GameManager.Instance.selectPlayer].xMoveSpeed;
+        
+        // Data 변경
+        player.data[GameManager.Instance.selectPlayer].xMoveSpeed = increseXSpeed;
+        Vector3 originalScale = user.transform.localScale;
+        user.transform.localScale *= changeScale;
 
         // 지속 시간만큼 기다립니다.
         yield return new WaitForSeconds(duration);
 
-        // 원래 스케일로 되돌립니다.
-        user.transform.localScale = originalScale; // 원래 스케일로 되돌림
+        // Data 초기화
+        player.data[GameManager.Instance.selectPlayer].xMoveSpeed = originalSpeed;
+        user.transform.localScale = originalScale;
     }
 }

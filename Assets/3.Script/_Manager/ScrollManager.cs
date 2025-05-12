@@ -28,7 +28,7 @@ public class ScrollManager : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.isLive) // 플레이어가 생존 중일떄 스폰되는 오브젝트(장애물, 아이템)들이 이동하는 동작 실행
+        if (GameManager.Instance.isLive) // 플레이어가 생존 중일떄 스폰되는 오브젝트(장애물, 아이템)들이 이동하는 동작 실행
         {
             MoveObstacles();   // 장애물 이동
             MoveCollectable(); // 아이템 이동
@@ -53,12 +53,12 @@ public class ScrollManager : MonoBehaviour
             }
 
         // 장애물 이동에 따른 총 이동 거리 누적
-        GameManager.distance += scrollSpeed * Time.deltaTime;
+        GameManager.Instance.distance += scrollSpeed * Time.deltaTime;
 
         // 일정 거리마다 스크롤 배율을 증가(난이도 증가)
         // 현재 Phase = 현재까지 진행된 거리 / Phase가 증가하기 위한 기준 거리
         // 6.5 = 1250 / 200 -> 현재 Phase(6단계)
-        int currentPhase = (int)(GameManager.distance / incresePhase);
+        int currentPhase = (int)(GameManager.Instance.distance / incresePhase);
         if (lastPhase != currentPhase)
         {
             lastPhase = currentPhase;
@@ -94,14 +94,14 @@ public class ScrollManager : MonoBehaviour
                 tr.position += scrollDirection * colData.scrollSpeed * scrollIncreseSpeed * Time.deltaTime;
             }
         // 일정 거리마다 난이도 증가
-        int currentPhase = (int)(GameManager.distance / incresePhase);
+        int currentPhase = (int)(GameManager.Instance.distance / incresePhase);
         if (lastPhase != currentPhase)
         {
             lastPhase = currentPhase;
             scrollIncreseSpeed = ScrollIncreseSpeed;
         }
         // 총 점수 계산(거리 + 아이템 획득 점수)
-        GameManager.totalScore = GameManager.distance + GameManager.itemScore;
+        GameManager.Instance.totalScore = GameManager.Instance.distance + GameManager.Instance.itemScore;
         // 삭제 위치를 넘었을 경우 삭제
         for (int i = CollectableSpawnParent.childCount - 1; i >= 0; i--)
         {
