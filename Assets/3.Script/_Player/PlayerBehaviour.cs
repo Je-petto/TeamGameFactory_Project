@@ -13,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
     public List<PlayerData> data;   // GameManager.selectPlayer에 의하여 data의 요소들을 꺼내서 쓰기 위해 선언.
 
     // Player Data에서 가져온 데이터를 여기서 쓰기 위해 다시 정의(선언)함.
+    [ReadOnly] private GameObject mesh;
     [ReadOnly] private int maxHealth = 0;
     [ReadOnly] private float xMoveSpeed = 0;
     [ReadOnly] private float jumpForce = 0;
@@ -61,6 +62,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         SetupData();
         currentAbilityLastUseTime = -Mathf.Infinity; // 게임 시작 시 바로 사용 가능하도록 초기화
+
+        Quaternion direction = Quaternion.Euler(-90f, 0f, 0f);
+        Instantiate(mesh, Vector3.zero, direction, transform.Find("Mesh"));
+        GameManager.Instance.ResetGame();
     }
 
     void Update()
@@ -87,6 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
             maxHealth = data[GameManager.Instance.selectPlayer].maxHealth;
             xMoveSpeed = data[GameManager.Instance.selectPlayer].xMoveSpeed;
             jumpForce = data[GameManager.Instance.selectPlayer].jumpForce;
+            mesh = data[GameManager.Instance.selectPlayer].mesh;
 
             health = maxHealth;
         }
@@ -242,8 +248,6 @@ public class PlayerBehaviour : MonoBehaviour
             Obstacle obs = col.GetComponent<Obstacle>();
             SetHealth(-obs.data.damage, true);
         }
-
-
         Destroy(col.gameObject);
     }
     public IEnumerator ReverseMovement(float duration)

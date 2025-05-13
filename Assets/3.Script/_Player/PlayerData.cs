@@ -9,7 +9,9 @@ public enum PlayerEnum
 public class PlayerData : ScriptableObject
 {
     public PlayerEnum player;
-    
+    [Header("Mesh Setup")]
+    public GameObject mesh;
+
     [Header("Health Setup")]
     public int maxHealth = 100;
 

@@ -17,3 +17,4 @@ MonoBehaviour:
   xMoveSpeed: 0.45
   jumpForce: 5
   ability: {fileID: 11400000, guid: 44b2e9e3805a23c4c82e9b4f3022e430, type: 2}
+  mesh: {fileID: 7822429838863323, guid: e4d1c1a152a21f64faa2bb8193bd8bd6, type: 3}
